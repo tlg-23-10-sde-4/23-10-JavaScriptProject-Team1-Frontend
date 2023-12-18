@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Example';
-
+import Home from './pages/Home';
 
 function App() {
-  // JavaScript goes in here
-  const[user, setUser] = useState("Finally done loading");
 
   return (
-    <div className="App">
-      <Navbar user={user} /> {/* Passing 'user' to 'Navabar' as a prop */}
-      <h1>Hello this is react</h1>
-    </div>
+    <Router>  
+      <Routes>
+        {/* Routes to the pages we want to show */}
+        <Route path="/" element={ <Home  /> } />
+        <Route path="/login" element={ <Home  /> } />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"; // Import our hooks from the React Package
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
     const [title,setTitle] = useState("Title"); // Initial value of 'title'
@@ -23,7 +24,7 @@ function Navbar(props) {
         loadUserData();
     }, []); // This is the re-render conditions
 
-    
+
     if(isLoading) {
         return (
             <div>
@@ -34,7 +35,8 @@ function Navbar(props) {
         return (
             <div>
                 <h1>{title}</h1>
-                <h2>{props.user}</h2>
+                <Link to="/login">Login</Link>
+                <h2 >{props.user}</h2>
                 <h1 className="navbar">This would be the navbar</h1>
             </div>
         )

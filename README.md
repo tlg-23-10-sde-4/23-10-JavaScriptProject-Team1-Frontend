@@ -1,3 +1,22 @@
+# Group 1 Project front end
+
+# What is this? 
+- This is the front end of our application created in react
+
+## NPM packages installed
+- React-Router-Dom
+- bootstrap
+- React-Bootstrap
+- js-cookie
+- react-toastify
+- react-fontawesome
+- jwt-decode
+
+## How to use
+- Remember to run the `npm i` command everytime you pull from this repo as others may have added node dependencies
+
+- Using the `npm start` command will open the application in development mode
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

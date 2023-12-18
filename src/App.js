@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Navbar from './components/Example';
+
 
 function App() {
+  // JavaScript goes in here
+  const[user, setUser] = useState("Finally done loading");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar user={user} /> {/* Passing 'user' to 'Navabar' as a prop */}
+      <h1>Hello this is react</h1>
     </div>
   );
 }

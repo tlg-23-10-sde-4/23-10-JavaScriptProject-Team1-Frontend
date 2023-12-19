@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../assets/css/Navbar.css";
 
 const Navbar = () => {
   return (
-    <header id="nav-component-main">
+    <header className="Navbar" id="Navbar-component-main">
       <nav className="navbar sticky-top bg-body-tertiary">
         <div className="container-fluid">
-          <span className="navbar-brand mb-0 h1">Kon-Bon Gamers</span>
+          <span className="navbar-brand mb-0 h1">
+            <h1>Kon-Bon Gaming</h1>
+          </span>
           <ul>
             <li>
               <Link to="/">Home</Link>

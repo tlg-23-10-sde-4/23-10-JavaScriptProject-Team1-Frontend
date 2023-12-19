@@ -27,7 +27,7 @@ button {
 }
 
 nav {
-  z-index: -5;
+  z-index: 1;
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
@@ -103,8 +103,4 @@ nav {
   100% {
     transform: translateX(1);
   }
-}
-
-body {
-  background-color: black;
 }

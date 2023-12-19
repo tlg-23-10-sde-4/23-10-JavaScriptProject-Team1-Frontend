@@ -1,0 +1,106 @@
+.Navbar {
+  display: flexbox;
+  contain: content;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+
+#Navbar-title {
+  font-family: Cascadia Code;
+  font-weight: bold;
+}
+
+a,
+button {
+  width: 110px;
+  border-radius: 10rem;
+  background-color: white;
+  border-color: rgb(224, 224, 224);
+  text-wrap: nowrap;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  list-style-type: none;
+  font-family: Cascadia Code;
+  font-weight: bolder;
+  font-size: 10pt;
+}
+
+nav {
+  z-index: 1;
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(
+    315deg,
+    rgb(213, 102, 206) 3%,
+    rgb(53, 146, 239) 38%,
+    rgba(48, 238, 226, 1) 68%,
+    rgb(230, 76, 76) 98%
+  );
+  animation: gradient 20s linear infinite;
+  background-size: 2000% 1000%;
+  background-attachment: relative;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 2em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  background: rgb(255, 255, 255, 0.3);
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  background: rgb(255, 255, 255, 0.4);
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
+}

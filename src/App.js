@@ -7,7 +7,9 @@ import "./assets/css/Home.css"
 import ParticlesBg from "./components/ParticlesBg";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
-// import ParticlesConfig from "./components/config/ParticlesConfig";
+import SignUpPage from "./pages/SignUpPage";
+import ParticlesConfig from "./components/config/ParticlesConfig";
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         {/* <Route path="/ParticlesBg" element={<ParticlesConfig />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signUp" element={<SignUpPage />} />
       </Routes>
     </Router>
   );

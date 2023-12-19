@@ -6,6 +6,7 @@ import "./assets/css/Navbar.css";
 import ParticlesBg from "./components/ParticlesBg";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import ParticlesConfig from "./components/config/ParticlesConfig";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/ParticlesBg" element={<ParticlesConfig />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signUp" element={<SignUpPage />} />
       </Routes>
     </Router>
   );

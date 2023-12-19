@@ -1,26 +1,46 @@
 .Navbar {
-  font-family: Cascadia;
+  display: flexbox;
+  contain: content;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
 }
-a {
+
+#Navbar-title {
+  font-family: Cascadia Code;
+  font-weight: bold;
+}
+
+a,
+button {
+  width: 110px;
+  border-radius: 10rem;
+  background-color: white;
+  border-color: rgb(224, 224, 224);
+  text-wrap: nowrap;
   text-decoration: none;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
+  list-style-type: none;
+  font-family: Cascadia Code;
+  font-weight: bolder;
+  font-size: 10pt;
 }
 
 nav {
-  z-index: -2;
+  z-index: -5;
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: auto;
+  overflow: hidden;
   background: linear-gradient(
     315deg,
-    rgba(101, 0, 94, 1) 25%,
-    rgba(60, 132, 206, 1) 55%,
-    rgba(48, 238, 226, 1) 75%,
-    rgba(255, 25, 25, 1) 100%
+    rgb(213, 102, 206) 3%,
+    rgb(53, 146, 239) 38%,
+    rgba(48, 238, 226, 1) 68%,
+    rgb(230, 76, 76) 98%
   );
-  animation: gradient 30s ease infinite;
-  background-size: 300% 300%;
-  background-attachment: fixed;
+  animation: gradient 20s linear infinite;
+  background-size: 2000% 1000%;
+  background-attachment: relative;
 }
 
 @keyframes gradient {
@@ -36,29 +56,31 @@ nav {
 }
 
 .wave {
-  background: rgb(255 255 255 / 25%);
-  border-radius: 5000% 5000% 0 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1000% 1000% 0 0;
   position: fixed;
-  width: 300%;
-  height: 5rem;
-  animation: wave 5s -30s linear infinite;
+  width: 200%;
+  height: 2em;
+  animation: wave 10s -3s linear infinite;
   transform: translate3d(0, 0, 0);
-  opacity: 0.3;
-  top: 0;
+  opacity: 0.8;
+  bottom: 0;
   left: 0;
-  z-index: -5;
+  z-index: -1;
 }
 
 .wave:nth-of-type(2) {
-  top: -1.5em;
-  animation: wave 5s linear reverse infinite;
-  opacity: 0.5;
+  background: rgb(255, 255, 255, 0.3);
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
 }
 
 .wave:nth-of-type(3) {
-  top: -2.5em;
-  animation: wave 10s -30s linear infinite;
-  opacity: 0.3;
+  background: rgb(255, 255, 255, 0.4);
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
 }
 
 @keyframes wave {
@@ -82,83 +104,7 @@ nav {
     transform: translateX(1);
   }
 }
-.aa {
-  color: rgb(0, 136, 255);
-}
+
 body {
   background-color: black;
-}
-.card {
-  margin-top: 0%;
-  padding: 3%;
-  block-size: inherit !important;
-  min-height: 30vh;
-  aspect-ratio: 1/1.5;
-  position: sticky;
-  border-radius: 4.5rem;
-  background: linear-gradient(
-    315deg,
-    hsla(218, 31%, 17%, 1) 0%,
-    hsla(0, 0%, 31%, 1) 100%,
-    hsla(200, 6%, 19%, 1) 100%
-  );
-}
-
-.card::before,
-.card::after {
-  content: "";
-  position: relative;
-  inset: -0.1rem; /* top bottom left right zero */
-  z-index: -1;
-  background: conic-gradient(
-    from var(--gradient-angle),
-    var(--color19),
-    var(--color18),
-    var(--color17),
-    var(--color16),
-    var(--color15),
-    var(--color14),
-    var(--color13),
-    var(--color12),
-    var(--color11),
-    var(--color12),
-    var(--color13),
-    var(--color14),
-    var(--color15),
-    var(--color16),
-    var(--color17),
-    var(--color18),
-    var(--color19)
-  );
-  border-radius: 1.5rem; /* inherits the parents border radius */
-  animation: rotation 1.9s linear infinite;
-}
-.card::after {
-  filter: blur(3rem);
-}
-
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
-}
-:root {
-  --color11: #00f2ff;
-  --color12: #00e5ff;
-  --color13: #00d9ff;
-  --color14: #00ccff;
-  --color15: #00c3ff;
-  --color16: #00b7ff;
-  --color17: #00aaff;
-  --color18: #009dff;
-  --color19: #0091ff;
-  --color20: #0084ff;
 }

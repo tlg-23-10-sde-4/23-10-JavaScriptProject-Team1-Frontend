@@ -4,7 +4,8 @@ import Styles from "./login.css"
 function LoginPage() {
     return (
         <>
-            <div className="card-container">
+        {/* is this working */}
+            <div className="card-container border">
                 <div className="card" style={{width: "18rem"}}>
                 <div className="mb-3 row">
                         <label for="staticEmail" className="col col-form-label">Email</label>

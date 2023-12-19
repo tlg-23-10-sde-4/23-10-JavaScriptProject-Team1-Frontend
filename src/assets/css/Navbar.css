@@ -1,0 +1,164 @@
+.Navbar {
+  font-family: Cascadia;
+}
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+nav {
+  z-index: -2;
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: linear-gradient(
+    315deg,
+    rgba(101, 0, 94, 1) 25%,
+    rgba(60, 132, 206, 1) 55%,
+    rgba(48, 238, 226, 1) 75%,
+    rgba(255, 25, 25, 1) 100%
+  );
+  animation: gradient 30s ease infinite;
+  background-size: 300% 300%;
+  background-attachment: fixed;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 5000% 5000% 0 0;
+  position: fixed;
+  width: 300%;
+  height: 5rem;
+  animation: wave 5s -30s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  z-index: -5;
+}
+
+.wave:nth-of-type(2) {
+  top: -1.5em;
+  animation: wave 5s linear reverse infinite;
+  opacity: 0.5;
+}
+
+.wave:nth-of-type(3) {
+  top: -2.5em;
+  animation: wave 10s -30s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
+}
+.aa {
+  color: rgb(0, 136, 255);
+}
+body {
+  background-color: black;
+}
+.card {
+  margin-top: 0%;
+  padding: 3%;
+  block-size: inherit !important;
+  min-height: 30vh;
+  aspect-ratio: 1/1.5;
+  position: sticky;
+  border-radius: 4.5rem;
+  background: linear-gradient(
+    315deg,
+    hsla(218, 31%, 17%, 1) 0%,
+    hsla(0, 0%, 31%, 1) 100%,
+    hsla(200, 6%, 19%, 1) 100%
+  );
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: relative;
+  inset: -0.1rem; /* top bottom left right zero */
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--color19),
+    var(--color18),
+    var(--color17),
+    var(--color16),
+    var(--color15),
+    var(--color14),
+    var(--color13),
+    var(--color12),
+    var(--color11),
+    var(--color12),
+    var(--color13),
+    var(--color14),
+    var(--color15),
+    var(--color16),
+    var(--color17),
+    var(--color18),
+    var(--color19)
+  );
+  border-radius: 1.5rem; /* inherits the parents border radius */
+  animation: rotation 1.9s linear infinite;
+}
+.card::after {
+  filter: blur(3rem);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+:root {
+  --color11: #00f2ff;
+  --color12: #00e5ff;
+  --color13: #00d9ff;
+  --color14: #00ccff;
+  --color15: #00c3ff;
+  --color16: #00b7ff;
+  --color17: #00aaff;
+  --color18: #009dff;
+  --color19: #0091ff;
+  --color20: #0084ff;
+}

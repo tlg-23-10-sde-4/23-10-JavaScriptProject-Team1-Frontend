@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ParticlesConfig from "./components/config/ParticlesConfig";
+import GameCatalog from "./pages/GameCatalog";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/GameCatalog" element={<GameCatalog />} />
       </Routes>
     </Router>
   );

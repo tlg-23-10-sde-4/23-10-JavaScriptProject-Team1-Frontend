@@ -29,20 +29,20 @@ function SignUpPage() {
         },
         body: JSON.stringify(data),
       });
-
+      const res = await response.json();
       if (!response.ok) {
         if (response.status === 400) {
-          toast.error(`${error}`, {
+          toast.error(`${res.message}`, {
             position: toast.POSITION.TOP_CENTER,
             draggable: false,
           });
         } else if (response.status === 401) {
-          toast.error(`${error}`, {
+          toast.error(`${res.message}`, {
             position: toast.POSITION.TOP_CENTER,
             draggable: false,
           });
         } else {
-          toast.error(`${error}`, {
+          toast.error(`${res.message}`, {
             position: toast.POSITION.TOP_CENTER,
             draggable: false,
           });
@@ -51,13 +51,16 @@ function SignUpPage() {
 
       // Check for response with no content (204)
       if (!response.no_content) {
-        toast.error(`${error}`, {
+        toast.error(`${res.message}`, {
           position: toast.POSITION.TOP_CENTER,
           draggable: false,
         });
       }
 
-      console.log("User signed up successfully");
+      toast.success(`${res.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
       // Handle success for signing up
     } catch (error) {
       toast.error(`${error}`, {

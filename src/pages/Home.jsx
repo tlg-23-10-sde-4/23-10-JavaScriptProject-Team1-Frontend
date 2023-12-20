@@ -15,10 +15,7 @@ function Home() {
           <h1 className="display-4">All about us!</h1>
           <p className="lead">We connect People</p>
           <hr className="my-4" />
-          <p>
-            This site is designed to connect people, based on their similar
-            interest in similar games.
-          </p>
+          <p>This site is designed to connect people, based on their similar interest in similar games.</p>
           <p className="lead">
             <Link to="/signup" className="btn btn-warning">
               Sign-up

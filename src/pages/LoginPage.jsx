@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Styles from "../assets/css/login.css"
 
 function LoginPage() {
     const [formState, setFormState] = useState({ userEmail: "", password: "" });
@@ -10,46 +9,46 @@ function LoginPage() {
         setFormState({ ...formState, [name]: value });
     }
 
-    const handleFormSubmit = async (e) => {
-        // prevent the forms default
-        e.preventDefault();
+  const handleFormSubmit = async (e) => {
+    // prevent the forms default
+    e.preventDefault();
 
-
-        // set the username and password from the input fields 
-        const data = {
-            userEmail: formState.userEmail,
-            password: formState.password
-        }
-
-        console.log(data);
+    // set the username and password from the input fields
+    const data = {
+      userEmail: formState.userName,
+      password: formState.password,
+    };
+    console.log(data);
 
         // Post for response and if for error codes
 
-        //     const response = await fetch("http://localhost:3001/login", {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(data)
-        //     }
-        //     );
+    const response = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include",
+    });
 
         //     const resData = response.json()
 
-        //     if(response.status === 400) {
-        //         // 400 bad request | credentials or password
-        //         // const errorText = await response.text();
-        //         console.log("Username or Password is not recognized")
-        //         // console.log(resData.message)
-        //     } else if (response.status === 404) {
-        //         // serverside request not found.
-        //         console.log("The page cannot be loaded or found, sorry.")
-        //     }
-        //     if(response.status === 500) {
-        //         // internal server error
-        //         console.log("I think our servers are down.")
-        //     }
+    // console.log(resData);
+
+    if (response.status === 400) {
+      // 400 bad request | credentials or password
+      console.log("Username or Password is not recognized");
+      // console.log(resData.message)
+    } else if (response.status === 404) {
+      // serverside request not found.
+      console.log("The page cannot be loaded or found, sorry.");
+    } else if (response.status === 500) {
+      // internal server error
+      console.log("I think our servers are down.");
+    } else if (response.status === 200) {
+      window.location.replace("/");
     }
+  };
 
     return (
         <>

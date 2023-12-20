@@ -2,27 +2,27 @@
 import React, { useState } from "react";
 
 function SignUpPage() {
-  const [formState, setFormState] = useState({ email: "", username: "", password: "" }); //! hooking variables to store user input
+  const [formState, setFormState] = useState({ email: "", username: "", password: "" });
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormState({ ...formState, [name]: value }); //! handling(updating state)
+    setFormState({ ...formState, [name]: value });
   };
 
   const postNewUserSignUp = async () => {
-    //! handling form submission POST request
     const data = {
       email: formState.email,
       username: formState.username,
       password: formState.password,
-    }; //! data object
+    };
 
     try {
-      const message200 = "Response Success - 200 (OK)";
-      const message204 = "Response Error - 204 (No Content)";
+      setLoading(true);
+
       const response = await fetch("/auth/signUp", {
-        //? peep the fetch function sending a POST request
-        method: "POST", //! POST request
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,19 +30,27 @@ function SignUpPage() {
       });
 
       if (!response.ok) {
-        throw new Error(message200);
+        if (response.status === 400) {
+          throw new Error("Bad Request: Invalid input data");
+        } else if (response.status === 401) {
+          throw new Error("Unauthorized: Authentication failed");
+        } else {
+          throw new Error("Unexpected error");
+        }
       }
 
       // Check for response with no content (204)
       if (!response.no_content) {
-        throw new Error(message204);
+        throw new Error("Response Error - 204 (No Content)");
       }
 
       console.log("User signed up successfully");
       // Handle success for signing up
     } catch (error) {
-      console.error("Error signing up:", error.message); //! error handling
-      // Handle error for signing up
+      console.error("Error signing up:", error.message);
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,14 +75,16 @@ function SignUpPage() {
       <label>Password: </label>
       <input
         required
-        type="text"
+        type="password"
         name="password"
         placeholder="Create password"
         onChange={handleInputChange}
       />
-      <button required onClick={postNewUserSignUp}>
-        Save and Submit
+      <button disabled={loading} onClick={postNewUserSignUp}>
+        {loading ? "Signing up..." : "Save and Submit"}
       </button>
+
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 }

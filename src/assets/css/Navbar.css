@@ -5,25 +5,32 @@
   padding-bottom: 0px;
   margin-top: 0px;
 }
+#home,
+#games,
+#login {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-bottom: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: system-ui, -apple-system;
+  color: rgb(255, 255, 255);
+  width: 7rem;
+  height: 2.5rem;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
 
 #Navbar-title {
   font-family: Cascadia Code;
   font-weight: bold;
-}
-
-a,
-button {
-  width: 110px;
-  border-radius: 10rem;
-  background-color: white;
-  border-color: rgb(224, 224, 224);
-  text-wrap: nowrap;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  list-style-type: none;
-  font-family: Cascadia Code;
-  font-weight: bolder;
-  font-size: 10pt;
 }
 
 nav {

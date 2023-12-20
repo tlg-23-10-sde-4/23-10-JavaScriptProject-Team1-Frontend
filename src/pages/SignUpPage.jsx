@@ -18,7 +18,7 @@ function SignUpPage() {
     }; //! data object
 
     try {
-      const response = await fetch("//! update endpoint", {
+      const response = await fetch("/auth/signUp", {
         //? peep the fetch function sending a POST request
         method: "POST", //! POST request
         headers: {

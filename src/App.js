@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { ToastContainer } from "react-toastify";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -11,6 +12,7 @@ import SignUpPage from "./pages/SignUpPage";
 function App() {
   return (
     <Router>
+      <ToastContainer theme="colored" autoClose={2000} />
       <Routes>
         {/* Routes to the pages we want to show */}
         {/* <Route path="/ParticlesBg" element={<ParticlesConfig />} /> */}

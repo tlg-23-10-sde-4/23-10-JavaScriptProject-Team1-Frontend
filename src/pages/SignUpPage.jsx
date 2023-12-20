@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 function SignUpPage() {
   const [formState, setFormState] = useState({ email: "", username: "", password: "" });
@@ -31,23 +32,38 @@ function SignUpPage() {
 
       if (!response.ok) {
         if (response.status === 400) {
-          throw new Error("Bad Request: Invalid input data");
+          toast.error(`${error}`, {
+            position: toast.POSITION.TOP_CENTER,
+            draggable: false,
+          });
         } else if (response.status === 401) {
-          throw new Error("Unauthorized: Authentication failed");
+          toast.error(`${error}`, {
+            position: toast.POSITION.TOP_CENTER,
+            draggable: false,
+          });
         } else {
-          throw new Error("Unexpected error");
+          toast.error(`${error}`, {
+            position: toast.POSITION.TOP_CENTER,
+            draggable: false,
+          });
         }
       }
 
       // Check for response with no content (204)
       if (!response.no_content) {
-        throw new Error("Response Error - 204 (No Content)");
+        toast.error(`${error}`, {
+          position: toast.POSITION.TOP_CENTER,
+          draggable: false,
+        });
       }
 
       console.log("User signed up successfully");
       // Handle success for signing up
     } catch (error) {
-      console.error("Error signing up:", error.message);
+      toast.error(`${error}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
       setError(error.message);
     } finally {
       setLoading(false);

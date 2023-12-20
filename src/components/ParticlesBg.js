@@ -1,9 +1,9 @@
-import React from "react";
-import Particles from "react-tsparticles";
-import ParticlesConfig from "./config/ParticlesConfig";
+// import React from "react";
+// import Particles from "react-tsparticles";
+// import ParticlesConfig from "./config/ParticlesConfig";
 
-const ParticlesBg = () => {
-  return <Particles params={ParticlesConfig} />;
-};
+// const ParticlesBg = () => {
+//   return <Particles params={ParticlesConfig} />;
+// };
 
-export default ParticlesBg;
+// export default ParticlesBg;

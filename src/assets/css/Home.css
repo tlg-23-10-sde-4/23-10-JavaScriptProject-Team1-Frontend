@@ -1,0 +1,23 @@
+.homepage-container {
+    height: 100vh;
+}
+
+.carousel-container {
+
+    height: 300px;
+    width: 300px;
+ 
+}
+
+.homepage-carousel-image {
+        height: 100%;
+        width: 100%
+        
+}
+
+.homepage-carousel-caption {
+    background-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+
+}

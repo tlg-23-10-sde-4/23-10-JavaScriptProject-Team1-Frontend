@@ -18,6 +18,8 @@ function SignUpPage() {
     }; //! data object
 
     try {
+      const message200 = "Response Success - 200 (OK)";
+      const message204 = "Response Error - 204 (No Content)";
       const response = await fetch("/auth/signUp", {
         //? peep the fetch function sending a POST request
         method: "POST", //! POST request
@@ -28,7 +30,12 @@ function SignUpPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Network not ok");
+        throw new Error(message200);
+      }
+
+      // Check for response with no content (204)
+      if (!response.no_content) {
+        throw new Error(message204);
       }
 
       console.log("User signed up successfully");

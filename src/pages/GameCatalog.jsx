@@ -1,9 +1,7 @@
-GameCatalog
-
 // GameCatalog.jsx
-import React from 'react';
-import GameCardGrid from '../components/GameCardGrid';
-import NavBar  from '../components/Navbar';
+import React from "react";
+import GameCardGrid from "../components/GameCardGrid";
+import NavBar from "../components/Navbar";
 
 const GameCatalog = () => {
   return (
@@ -13,6 +11,6 @@ const GameCatalog = () => {
       <GameCardGrid />
     </div>
   );
-}
+};
 
 export default GameCatalog;

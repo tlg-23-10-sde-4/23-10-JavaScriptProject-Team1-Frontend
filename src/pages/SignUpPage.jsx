@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
-function SignUpPage() {
+const SignUpPage = () => {
   const [formState, setFormState] = useState({ email: "", username: "", password: "" });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ function SignUpPage() {
   };
 
   const postNewUserSignUp = async () => {
+    console.log("Entering POST phase for post signup user");
     const data = {
       email: formState.email,
       username: formState.username,
@@ -20,16 +22,16 @@ function SignUpPage() {
     };
 
     try {
-      setLoading(true);
-
-      const response = await fetch("/auth/signUp", {
+      const response = await fetch("http://localhost:3000/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
+
       const res = await response.json();
+
       if (!response.ok) {
         if (response.status === 400) {
           toast.error(`${res.message}`, {
@@ -47,29 +49,30 @@ function SignUpPage() {
             draggable: false,
           });
         }
+      } else {
+        // Check for response with no content (204)
+        if (!response.no_content) {
+          toast.error(`${res.message}`, {
+            position: toast.POSITION.TOP_CENTER,
+            draggable: false,
+          });
+        } else {
+          toast.success(`${res.message}`, {
+            position: toast.POSITION.TOP_CENTER,
+            draggable: false,
+          });
+        }
       }
-
-      // Check for response with no content (204)
-      if (!response.no_content) {
-        toast.error(`${res.message}`, {
-          position: toast.POSITION.TOP_CENTER,
-          draggable: false,
-        });
-      }
-
-      toast.success(`${res.message}`, {
-        position: toast.POSITION.TOP_CENTER,
-        draggable: false,
-      });
-      // Handle success for signing up
     } catch (error) {
-      toast.error(`${error}`, {
+      console.error("Error during signup:", error);
+      toast.error("Error during signup. Please try again.", {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,
       });
       setError(error.message);
     } finally {
       setLoading(false);
+      window.location.replace("/");
     }
   };
 
@@ -82,6 +85,7 @@ function SignUpPage() {
         name="email"
         placeholder="Enter email: email@example.com"
         onChange={handleInputChange}
+        input
       />
       <label>Username: </label>
       <input
@@ -90,6 +94,7 @@ function SignUpPage() {
         name="username"
         placeholder="Create username"
         onChange={handleInputChange}
+        input
       />
       <label>Password: </label>
       <input
@@ -98,14 +103,15 @@ function SignUpPage() {
         name="password"
         placeholder="Create password"
         onChange={handleInputChange}
+        input
       />
       <button disabled={loading} onClick={postNewUserSignUp}>
-        {loading ? "Signing up..." : "Save and Submit"}
+        <Link to="/home"> {loading ? "Signing up..." : "Save & Submit"}</Link>
       </button>
 
       {error && <div className="error-message">{error}</div>}
     </div>
   );
-}
+};
 
 export default SignUpPage;

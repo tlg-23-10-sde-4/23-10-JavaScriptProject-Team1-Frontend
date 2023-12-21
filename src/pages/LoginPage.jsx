@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function LoginPage() {
   const [formState, setFormState] = useState({ userEmail: "", password: "" });
@@ -10,17 +11,13 @@ function LoginPage() {
   };
 
   const handleFormSubmit = async (e) => {
-    // prevent the forms default
     e.preventDefault();
 
-    // set the username and password from the input fields
     const data = {
       userEmail: formState.userName,
       password: formState.password,
     };
     console.log(data);
-
-    // Post for response and if for error codes
 
     const response = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
@@ -31,22 +28,31 @@ function LoginPage() {
       credentials: "include",
     });
 
-    //     const resData = response.json()
-
-    // console.log(resData);
+    const resData = response.json()
 
     if (response.status === 400) {
-      // 400 bad request | credentials or password
-      console.log("Username or Password is not recognized");
-      // console.log(resData.message)
+      toast.error(`${resData.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
     } else if (response.status === 404) {
-      // serverside request not found.
-      console.log("The page cannot be loaded or found, sorry.");
+      toast.error(`${resData.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
     } else if (response.status === 500) {
-      // internal server error
-      console.log("I think our servers are down.");
+      toast.error(`${resData.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
     } else if (response.status === 200) {
-      window.location.replace("/");
+      toast.success(`${resData.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
+      setTimeout(() => {
+        window.location.replace("/");
+      }, 2000)
     }
   };
 
@@ -82,7 +88,7 @@ function LoginPage() {
           </div>
           <input type="submit" value="Log In" />
           <div className="mt-3">
-            <p>
+            <p className="text-light">
               Dont have an account yet? <Link to="/signup">Signup Here</Link>
             </p>
           </div>

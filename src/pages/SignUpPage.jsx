@@ -32,37 +32,17 @@ function SignUpPage() {
       });
       const res = await response.json();
       if (!response.ok) {
-        if (response.status === 400) {
-          toast.error(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        } else if (response.status === 401) {
-          toast.error(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        } else {
-          toast.error(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        }
-      }
-
-      // Check for response with no content (204)
-      if (!response.no_content) {
         toast.error(`${res.message}`, {
           position: toast.POSITION.TOP_CENTER,
           draggable: false,
         });
+      } else {
+        toast.success(`${res.message}`, {
+          position: toast.POSITION.TOP_CENTER,
+          draggable: false,
+        });
+        window.location.replace('/login');
       }
-
-      toast.success(`${res.message}`, {
-        position: toast.POSITION.TOP_CENTER,
-        draggable: false,
-      });
-      // Handle success for signing up
     } catch (error) {
       toast.error(`${error}`, {
         position: toast.POSITION.TOP_CENTER,
@@ -112,7 +92,7 @@ function SignUpPage() {
           />
         </div>
         <button type="submit" className="signup-button">
-          <span>Button</span><i></i>
+          <span>Sign Up</span><i></i>
         </button>
       </form>
     </div>

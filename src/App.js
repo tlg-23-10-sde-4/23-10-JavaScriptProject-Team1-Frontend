@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ToastContainer } from "react-toastify";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./assets/css/Navbar.css";
@@ -11,18 +11,39 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ParticlesConfig from "./components/config/ParticlesConfig";
 import GameCatalog from "./pages/GameCatalog";
+import Profile from "./pages/Profile";
+import gameHandler from "./utils/gameHandler";
 
 function App() {
+  const [games,setGames] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
+  const [user, setUser] = useState({});
+
+  // Fetch the game data in top level (Here in the app.js) so we can pass it as a prop all of our pages
+  const fetchGameData = async () => {
+    const gameData = await gameHandler.fetchGames();
+    setGames(gameData.games);
+    setIsloading(false);
+    console.log(gameData.games)
+  }
+
+  useEffect(() => {
+    fetchGameData();
+  }, []);
+
+  const data ={ isLoading, setIsloading, games, user }
+
   return (
     <Router>
       <ToastContainer theme="colored" autoClose={2000} />
       <Routes>
         {/* Routes to the pages we want to show */}
         {/* <Route path="/ParticlesBg" element={<ParticlesConfig />} /> */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home data={data} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
-        <Route path="/GameCatalog" element={<GameCatalog />} />
+        <Route path="/GameCatalog" element={<GameCatalog data={data} />} />
+        <Route path="/profile" element={<Profile data={data} />} />
       </Routes>
     </Router>
   );

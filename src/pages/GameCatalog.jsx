@@ -1,11 +1,9 @@
-GameCatalog
-
-// GameCatalog.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import GameCardGrid from '../components/GameCardGrid';
 import NavBar  from '../components/Navbar';
 
 const GameCatalog = () => {
+  const [games, setGames] = useState([])
   return (
     <div>
       <NavBar />

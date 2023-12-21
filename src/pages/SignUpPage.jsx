@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 
-const SignUpPage = () => {
+function SignUpPage() {
   const [formState, setFormState] = useState({ email: "", username: "", password: "" });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -13,8 +12,8 @@ const SignUpPage = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  const postNewUserSignUp = async () => {
-    console.log("Entering POST phase for post signup user");
+  const postNewUserSignUp = async (e) => {
+    e.preventDefault(e);
     const data = {
       email: formState.email,
       username: formState.username,
@@ -22,16 +21,16 @@ const SignUpPage = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/signup", {
+      setLoading(true);
+
+      const response = await fetch("http://localhost:3001/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-
       const res = await response.json();
-
       if (!response.ok) {
         if (response.status === 400) {
           toast.error(`${res.message}`, {
@@ -49,69 +48,65 @@ const SignUpPage = () => {
             draggable: false,
           });
         }
-      } else {
-        // Check for response with no content (204)
-        if (!response.no_content) {
-          toast.error(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        } else {
-          toast.success(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        }
       }
+
+      // Check for response with no content (204)
+      if (!response.no_content) {
+        toast.error(`${res.message}`, {
+          position: toast.POSITION.TOP_CENTER,
+          draggable: false,
+        });
+      }
+
+      toast.success(`${res.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
+      // Handle success for signing up
     } catch (error) {
-      console.error("Error during signup:", error);
-      toast.error("Error during signup. Please try again.", {
+      toast.error(`${error}`, {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,
       });
       setError(error.message);
     } finally {
       setLoading(false);
-      window.location.replace("/");
     }
   };
 
   return (
-    <div className="signUp">
-      <label>Email: </label>
-      <input
-        required
-        type="text"
-        name="email"
-        placeholder="Enter email: email@example.com"
-        onChange={handleInputChange}
-        input
-      />
-      <label>Username: </label>
-      <input
-        required
-        type="text"
-        name="username"
-        placeholder="Create username"
-        onChange={handleInputChange}
-        input
-      />
-      <label>Password: </label>
-      <input
-        required
-        type="password"
-        name="password"
-        placeholder="Create password"
-        onChange={handleInputChange}
-        input
-      />
-      <button disabled={loading} onClick={postNewUserSignUp}>
-        <Link to="/home"> {loading ? "Signing up..." : "Save & Submit"}</Link>
-      </button>
-
-      {error && <div className="error-message">{error}</div>}
+    <div>
+      <form onSubmit={postNewUserSignUp}>
+        <label>Email:</label>
+        <input
+          required
+          type="text"
+          name="email"
+          placeholder="Enter email: email@example.com"
+          onChange={handleInputChange}
+        />
+        <label>Username:</label>
+        <input
+          required
+          type="text"
+          name="username"
+          placeholder="Create username"
+          onChange={handleInputChange}
+        />
+        <label>Password:</label>
+        <input
+          required
+          type="password"
+          name="password"
+          placeholder="Create password"
+          onChange={handleInputChange}
+        />
+        <button disabled={loading} type="submit">
+          {loading ? "Signing up..." : "Save & Submit"}
+        </button>
+      </form>
     </div>
   );
-};
+}
 
 export default SignUpPage;

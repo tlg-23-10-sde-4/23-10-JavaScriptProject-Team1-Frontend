@@ -14,6 +14,16 @@ const GameDetails = (props) => {
         <NavBar />
       </div>
 
+      {/* different idea for page styling
+      
+      
+      
+      
+      
+      
+      
+      */}
+
       <div>
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />

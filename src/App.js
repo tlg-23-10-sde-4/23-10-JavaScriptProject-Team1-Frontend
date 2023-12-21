@@ -34,31 +34,6 @@ function App() {
   }, []);
 
   const data ={ isLoading, setIsloading, games, user }
-
-
-
-  // You need these two together (Move these to the GameDetails Page)
-  // Call the getGameById in a 'useEffect' hook. 
-  // Create a local 'isLoading' state to show loading screen while we get the data
-  const [gameData, setGameData] = useState({});
-  const getGameById = async (gameId) => {
-    const url = `http://localhost:3001/api/gameById/${gameId}`
-
-    const response = await fetch(url, {
-      method: 'GET',
-    });
-
-    const resData = await response.json();
-    if(response.status === 200) {
-      setGameData(resData);
-    } else {
-      alert(`${resData.message}`) // Change this to toast.error
-      setTimeout(() => {
-        window.location.replace('/GameCatalog');
-      }, 2000)
-    }
-  }
-
   return (
     <Router>
       <ToastContainer theme="colored" autoClose={2000} />
@@ -70,7 +45,7 @@ function App() {
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/GameCatalog" element={<GameCatalog data={data} />} />
         <Route path="/profile" element={<Profile data={data} />} />
-        <Route path="/GameDetails" element={<GameDetails data={data} />}/>
+        <Route path="/GameDetails/:gameId" element={<GameDetails/>}/>
       </Routes>
     </Router>
   );

@@ -45,7 +45,7 @@ function App() {
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/GameCatalog" element={<GameCatalog data={data} />} />
         <Route path="/profile" element={<Profile data={data} />} />
-        <Route path="/GameDetails" element={<GameDetails data={data} />}/>
+        <Route path="/GameDetails/:gameId" element={<GameDetails/>}/>
       </Routes>
     </Router>
   );

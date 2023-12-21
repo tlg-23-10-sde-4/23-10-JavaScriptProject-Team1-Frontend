@@ -12,7 +12,8 @@ function SignUpPage() {
     setFormState({ ...formState, [name]: value });
   };
 
-  const postNewUserSignUp = async () => {
+  const postNewUserSignUp = async (e) => {
+    e.preventDefault(e);
     const data = {
       email: formState.email,
       username: formState.username,
@@ -22,7 +23,7 @@ function SignUpPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("/auth/signUp", {
+      const response = await fetch("http://localhost:3001/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,36 +75,36 @@ function SignUpPage() {
   };
 
   return (
-    <div className="signUp">
-      <label>Email: </label>
-      <input
-        required
-        type="text"
-        name="email"
-        placeholder="Enter email: email@example.com"
-        onChange={handleInputChange}
-      />
-      <label>Username: </label>
-      <input
-        required
-        type="text"
-        name="username"
-        placeholder="Create username"
-        onChange={handleInputChange}
-      />
-      <label>Password: </label>
-      <input
-        required
-        type="password"
-        name="password"
-        placeholder="Create password"
-        onChange={handleInputChange}
-      />
-      <button disabled={loading} onClick={postNewUserSignUp}>
-        {loading ? "Signing up..." : "Save and Submit"}
-      </button>
-
-      {error && <div className="error-message">{error}</div>}
+    <div>
+      <form onSubmit={postNewUserSignUp}>
+        <label>Email:</label>
+        <input
+          required
+          type="text"
+          name="email"
+          placeholder="Enter email: email@example.com"
+          onChange={handleInputChange}
+        />
+        <label>Username:</label>
+        <input
+          required
+          type="text"
+          name="username"
+          placeholder="Create username"
+          onChange={handleInputChange}
+        />
+        <label>Password:</label>
+        <input
+          required
+          type="password"
+          name="password"
+          placeholder="Create password"
+          onChange={handleInputChange}
+        />
+        <button disabled={loading} type="submit">
+          {loading ? "Signing up..." : "Save & Submit"}
+        </button>
+      </form>
     </div>
   );
 }

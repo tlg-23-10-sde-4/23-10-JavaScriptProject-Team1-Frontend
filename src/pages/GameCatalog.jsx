@@ -12,6 +12,6 @@ const GameCatalog = (props) => {
       <GameCardGrid data={props.data} />
     </div>
   );
-}
+};
 
 export default GameCatalog;

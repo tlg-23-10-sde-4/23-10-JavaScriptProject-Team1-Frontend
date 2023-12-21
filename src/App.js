@@ -24,7 +24,6 @@ function App() {
     const gameData = await gameHandler.fetchGames();
     setGames(gameData.games);
     setIsloading(false);
-    console.log(gameData.games)
   }
 
   useEffect(() => {

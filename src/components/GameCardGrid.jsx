@@ -15,9 +15,9 @@ function GameCard({ game }) {
   );
 }
 
-function GameCardGrid({ games }) {
+function GameCardGrid(props) {
   const [sortedGames, setSortedGames] = useState([]); // useState to hold the sorted games
-
+  const games = props.data.games
   // Sort the games initially
   useEffect(() => {
     const sortedByYear = [...games]; // Create a new array to avoid modifying the original data

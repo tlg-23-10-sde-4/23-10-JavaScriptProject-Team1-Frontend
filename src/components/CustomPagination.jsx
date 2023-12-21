@@ -23,7 +23,7 @@ function CustomPagination({ totalPages, currentPage, onPageChange }) {
     items.push(
       <Pagination.Item
         key={number}
-        active={number === currentPage + 1}
+        active={number === currentPage}
         onClick={() => onPageChange(number - 1)}
       >
         {number}

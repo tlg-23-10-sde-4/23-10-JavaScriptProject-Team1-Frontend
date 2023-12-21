@@ -1,14 +1,15 @@
-// GameCatalog.jsx
-import React from "react";
-import GameCardGrid from "../components/GameCardGrid";
-import NavBar from "../components/Navbar";
+import React from 'react';
+import GameCardGrid from '../components/GameCardGrid';
+import NavBar  from '../components/Navbar';
 
-const GameCatalog = () => {
+const GameCatalog = (props) => {
+  const games = props.data.games;
+  console.log(games);
   return (
     <div>
       <NavBar />
       <h1>Welcome to the Game Catalog!</h1>
-      <GameCardGrid />
+      <GameCardGrid data={props.data} />
     </div>
   );
 };

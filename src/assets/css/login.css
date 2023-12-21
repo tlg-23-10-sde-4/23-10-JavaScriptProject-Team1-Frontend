@@ -3,7 +3,9 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-color: #444444;
+    background-image: url('../images/mario-bg.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .login-form {
@@ -14,12 +16,13 @@
     margin: 0 auto;
     padding: 20px;
     border: 2px solid #6F00FF;
-    background-color: #E0E0E0;
+    background-color: rgba(45, 86, 102, 0.9);
     border-radius: 5px;
     box-shadow: 0 0 10px #001F3F;
 }
 
 .welcomeback {
+    color: white;
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -34,6 +37,7 @@
     font-weight: bold;
     margin-bottom: 5px;
     font-family: 'Orbitron', sans-serif;
+    color: white;
 }
 
 .form-input {

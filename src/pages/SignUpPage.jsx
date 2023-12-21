@@ -4,16 +4,14 @@ import { toast } from "react-toastify";
 
 const SignUpPage = () => {
   const [formState, setFormState] = useState({ email: "", username: "", password: "" });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const postNewUserSignUp = async () => {
-    console.log("Entering POST phase for post signup user");
+  const postNewUserSignUp = async (e) => {
+    e.preventDefault();
     const data = {
       email: formState.email,
       username: formState.username,
@@ -21,8 +19,6 @@ const SignUpPage = () => {
     };
 
     try {
-      setLoading(true);
-
       const response = await fetch("http://localhost:3001/auth/signup", {
         method: "POST",
         headers: {
@@ -43,7 +39,9 @@ const SignUpPage = () => {
           position: toast.POSITION.TOP_CENTER,
           draggable: false,
         });
-        window.location.replace('/login');
+        setTimeout(() => {
+          window.location.replace('/login');
+        }, 2000)
       }
     } catch (error) {
       toast.error("Error during signup. Please try again.", {

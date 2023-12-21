@@ -39,18 +39,11 @@ const SignUpPage = () => {
           draggable: false,
         });
       } else {
-        // Check for response with no content (204)
-        if (!response.no_content) {
-          toast.error(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        } else {
-          toast.success(`${res.message}`, {
-            position: toast.POSITION.TOP_CENTER,
-            draggable: false,
-          });
-        }
+        toast.success(`${res.message}`, {
+          position: toast.POSITION.TOP_CENTER,
+          draggable: false,
+        });
+        window.location.replace('/login');
       }
     } catch (error) {
       console.error("Error during signup:", error);
@@ -108,7 +101,7 @@ const SignUpPage = () => {
           />
         </div>
         <button type="submit" className="signup-button">
-          <span>Button</span><i></i>
+          <span>Sign Up</span><i></i>
         </button>
         {error && <div className="error-message">{error}</div>}
       </form>

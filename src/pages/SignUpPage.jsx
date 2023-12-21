@@ -2,18 +2,18 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-function SignUpPage() {
+const SignUpPage = () => {
   const [formState, setFormState] = useState({ email: "", username: "", password: "" });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormState({ ...formState, [name]: value });
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const postNewUserSignUp = async (e) => {
-    e.preventDefault(e);
+  const postNewUserSignUp = async () => {
+    console.log("Entering POST phase for post signup user");
     const data = {
       email: formState.email,
       username: formState.username,
@@ -23,14 +23,16 @@ function SignUpPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3001/auth/signup", {
+      const response = await fetch("http://localhost:3001/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
+
       const res = await response.json();
+
       if (!response.ok) {
         toast.error(`${res.message}`, {
           position: toast.POSITION.TOP_CENTER,
@@ -44,14 +46,21 @@ function SignUpPage() {
         window.location.replace('/login');
       }
     } catch (error) {
-      toast.error(`${error}`, {
+      console.error("Error during signup:", error);
+      toast.error("Error during signup. Please try again.", {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,
       });
       setError(error.message);
     } finally {
       setLoading(false);
+      window.location.replace("/");
     }
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    postNewUserSignUp();
   };
 
   return (
@@ -94,9 +103,10 @@ function SignUpPage() {
         <button type="submit" className="signup-button">
           <span>Sign Up</span><i></i>
         </button>
+        {error && <div className="error-message">{error}</div>}
       </form>
     </div>
   );
-}
+};
 
 export default SignUpPage;

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Dna } from "react-loader-spinner";
-import GameCardGrid from '../components/GameCardGrid';
-import NavBar from '../components/Navbar';
+import GameCardGrid from "../components/GameCardGrid";
+import NavBar from "../components/Navbar";
 
 const GameCatalog = (props) => {
   const { games, isLoading } = props.data;
-  console.log(games);
 
   if (isLoading) {
     return (
@@ -19,12 +18,12 @@ const GameCatalog = (props) => {
           wrapperClass="dna-wrapper"
         />
       </div>
-    )
+    );
   } else {
     return (
-      <div style={{ backgroundColor: '#444444' }}>
+      <div style={{ backgroundColor: "#444444" }}>
         <NavBar />
-        <h1 className='text-light'>Welcome to the Game Catalog!</h1>
+        <h1 className="text-light">Welcome to the Game Catalog!</h1>
         <GameCardGrid data={props.data} />
       </div>
     );

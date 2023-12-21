@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { ToastContainer } from "react-toastify";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import "./App.css";
 import "./assets/css/Navbar.css";
 import "./assets/css/Home.css";
 import "./assets/css/login.css"
+import "./assets/css/GameCatalog.css"
+import "./assets/css/SignUpPage.css"
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";

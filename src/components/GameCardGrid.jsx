@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function GameCard({ game }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={game.background_image} />
-      <Card.Body>
+    <Card style={{ width: '18rem' }} className='game-card'>
+      <Card.Img style={{ height: "12rem" }} variant="top" src={game.background_image} />
+      <Card.Body className='game-card-body'>
         <Card.Title>{game.title}</Card.Title>
         <Card.Text>Released: {game.released}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Link to={`/GameDetails/${game.id}`} className="btn btn-primary">Check this out</Link>
       </Card.Body>
     </Card>
   );
@@ -26,20 +27,19 @@ function GameCardGrid(props) {
   }, [games]); // In theory this effect will change whenever the 'games' prop changes
 
   //sorting function that takes in the sortedGames array and returns a new sortedGames array
-    const sortGamesByYear = () => {
+  const sortGamesByYear = () => {
     const sortedByYear = [...games];  // Create a new array to avoid modifying the original data
     sortedByYear.sort((a, b) => new Date(a.released) - new Date(b.released));
     setSortedGames(sortedByYear);
   };
 
   return (
-          
-      <div>
-      <Button variant="primary" onClick={sortGamesByYear}>
+    <div className='d-flex flex-column align-items-center'>
+      <Button className='w-50 align-self-center' variant="primary" onClick={sortGamesByYear}>
         Sort by Year
       </Button>
-          <div>
-              {/* .map() abstracts away the iteration process and handles it internally...which is baller */}
+      <div className='catalog-container'>
+        {/* .map() abstracts away the iteration process and handles it internally...which is baller */}
         {sortedGames.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}

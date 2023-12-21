@@ -23,7 +23,7 @@ const SignUpPage = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3001/signup", {
+      const response = await fetch("http://localhost:3001/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,21 +46,11 @@ const SignUpPage = () => {
         window.location.replace('/login');
       }
     } catch (error) {
-      console.error("Error during signup:", error);
       toast.error("Error during signup. Please try again.", {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,
       });
-      setError(error.message);
-    } finally {
-      setLoading(false);
-      window.location.replace("/");
     }
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    postNewUserSignUp();
   };
 
   return (
@@ -103,7 +93,6 @@ const SignUpPage = () => {
         <button type="submit" className="signup-button">
           <span>Sign Up</span><i></i>
         </button>
-        {error && <div className="error-message">{error}</div>}
       </form>
     </div>
   );

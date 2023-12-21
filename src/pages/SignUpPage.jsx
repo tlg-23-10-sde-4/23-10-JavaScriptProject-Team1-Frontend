@@ -77,7 +77,7 @@ function SignUpPage() {
   return (
     <div className="signup-form-wrapper">
       <form onSubmit={postNewUserSignUp} className="signup-form">
-      <h1 className="text-light">Create an account</h1>
+        <h1 className="text-light">Create an account</h1>
         <div className="signup-form-group">
           <label className="signup-form-label">Email:</label>
           <input
@@ -111,11 +111,9 @@ function SignUpPage() {
             className="signup-form-input"
           />
         </div>
-        <div class="buttons-container">
-          <button disabled={loading} type="submit" className="button-arounder">
-            {loading ? "Signing up..." : "Save & Submit"}
-          </button>
-        </div>
+        <button type="submit" className="signup-button">
+          <span>Button</span><i></i>
+        </button>
       </form>
     </div>
   );

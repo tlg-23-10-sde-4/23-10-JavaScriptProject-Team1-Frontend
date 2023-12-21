@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dna } from "react-loader-spinner";
 import GameCardGrid from '../components/GameCardGrid';
 import NavBar from '../components/Navbar';
@@ -6,6 +6,7 @@ import NavBar from '../components/Navbar';
 const GameCatalog = (props) => {
   const { games, isLoading } = props.data;
   console.log(games);
+
   if (isLoading) {
     return (
       <div className="loading-animation">

@@ -9,7 +9,7 @@ import "./assets/css/login.css"
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-import ParticlesConfig from "./components/config/ParticlesConfig";
+// import ParticlesConfig from "./components/config/ParticlesConfig";
 import GameCatalog from "./pages/GameCatalog";
 import Profile from "./pages/Profile";
 import gameHandler from "./utils/gameHandler";

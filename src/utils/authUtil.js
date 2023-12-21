@@ -5,7 +5,6 @@ import Cookies from 'js-cookie';
 // function for getting the cookies
 
 class AuthService {
-
     getJwt() {
         return  Cookies.get('JWT')
     }
@@ -15,16 +14,21 @@ class AuthService {
         if(token) {
             const decoded = jwtDecode(token);
             return decoded.userId
+        } else {
+            return null;
         }
     }
 
     isLoggedIn() {
         const token = this.getJwt()
-        const decoded = jwtDecode(token)
-        const isExpired = decoded.exp < (Date.now() / 1000)
-        return token && !isExpired ? true : false;
+        if (token) {
+            const decoded = jwtDecode(token)
+            const isExpired = decoded.exp < (Date.now() / 1000)
+            return token && !isExpired ? true : false;
+        } else {
+            return false;
+        }
     }
-
 }
 
 export default new AuthService;

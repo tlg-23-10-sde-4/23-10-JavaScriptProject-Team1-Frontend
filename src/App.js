@@ -15,6 +15,7 @@ import SignUpPage from "./pages/SignUpPage";
 import GameCatalog from "./pages/GameCatalog";
 import Profile from "./pages/Profile";
 import gameHandler from "./utils/gameHandler";
+import GameDetails from "./pages/GameDetails";
 
 function App() {
   const [games,setGames] = useState([]);
@@ -69,6 +70,7 @@ function App() {
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/GameCatalog" element={<GameCatalog data={data} />} />
         <Route path="/profile" element={<Profile data={data} />} />
+        <Route path="/GameDetails" element={<GameDetails data={data} />}/>
       </Routes>
     </Router>
   );

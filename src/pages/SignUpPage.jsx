@@ -23,7 +23,7 @@ const SignUpPage = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3001/signup", {
+      const response = await fetch("http://localhost:3001/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +108,8 @@ const SignUpPage = () => {
           />
         </div>
         <button type="submit" className="signup-button">
-          <span>Button</span><i></i>
+          <span>Button</span>
+          <i></i>
         </button>
         {error && <div className="error-message">{error}</div>}
       </form>

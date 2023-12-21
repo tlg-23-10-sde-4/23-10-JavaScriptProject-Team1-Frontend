@@ -75,34 +75,44 @@ function SignUpPage() {
   };
 
   return (
-    <div>
-      <form onSubmit={postNewUserSignUp}>
-        <label>Email:</label>
-        <input
-          required
-          type="text"
-          name="email"
-          placeholder="Enter email: email@example.com"
-          onChange={handleInputChange}
-        />
-        <label>Username:</label>
-        <input
-          required
-          type="text"
-          name="username"
-          placeholder="Create username"
-          onChange={handleInputChange}
-        />
-        <label>Password:</label>
-        <input
-          required
-          type="password"
-          name="password"
-          placeholder="Create password"
-          onChange={handleInputChange}
-        />
-        <button disabled={loading} type="submit">
-          {loading ? "Signing up..." : "Save & Submit"}
+    <div className="signup-form-wrapper">
+      <form onSubmit={postNewUserSignUp} className="signup-form">
+        <h1 className="text-light">Create an account</h1>
+        <div className="signup-form-group">
+          <label className="signup-form-label">Email:</label>
+          <input
+            required
+            type="text"
+            name="email"
+            placeholder="Enter email: email@example.com"
+            onChange={handleInputChange}
+            className="signup-form-input"
+          />
+        </div>
+        <div className="signup-form-group">
+          <label className="signup-form-label">Username:</label>
+          <input
+            required
+            type="text"
+            name="username"
+            placeholder="Create username"
+            onChange={handleInputChange}
+            className="signup-form-input"
+          />
+        </div>
+        <div className="signup-form-group">
+          <label className="signup-form-label">Password:</label>
+          <input
+            required
+            type="password"
+            name="password"
+            placeholder="Create password"
+            onChange={handleInputChange}
+            className="signup-form-input"
+          />
+        </div>
+        <button type="submit" className="signup-button">
+          <span>Button</span><i></i>
         </button>
       </form>
     </div>

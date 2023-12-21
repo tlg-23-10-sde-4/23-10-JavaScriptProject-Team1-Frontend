@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { ToastContainer } from "react-toastify";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import "./App.css";
 import "./assets/css/Navbar.css";
 import "./assets/css/Home.css";
 import "./assets/css/login.css"
+import "./assets/css/GameCatalog.css"
+import "./assets/css/SignUpPage.css"
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -32,6 +34,30 @@ function App() {
   }, []);
 
   const data ={ isLoading, setIsloading, games, user }
+
+
+
+  // You need these two together (Move these to the GameDetails Page)
+  // Call the getGameById in a 'useEffect' hook. 
+  // Create a local 'isLoading' state to show loading screen while we get the data
+  const [gameData, setGameData] = useState({});
+  const getGameById = async (gameId) => {
+    const url = `http://localhost:3001/api/gameById/${gameId}`
+
+    const response = await fetch(url, {
+      method: 'GET',
+    });
+
+    const resData = await response.json();
+    if(response.status === 200) {
+      setGameData(resData);
+    } else {
+      alert(`${resData.message}`) // Change this to toast.error
+      setTimeout(() => {
+        window.location.replace('/GameCatalog');
+      }, 2000)
+    }
+  }
 
   return (
     <Router>

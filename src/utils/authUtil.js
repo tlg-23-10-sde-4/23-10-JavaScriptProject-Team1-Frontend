@@ -13,7 +13,7 @@ class AuthService {
         const token = this.getJwt()
         if(token) {
             const decoded = jwtDecode(token);
-            return decoded.userId
+            return decoded.JWT
         } else {
             return null;
         }

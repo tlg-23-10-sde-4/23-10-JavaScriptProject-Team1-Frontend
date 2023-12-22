@@ -44,12 +44,10 @@ function GameInfo(props) {
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>Comments</Accordion.Header>
-            <Accordion.Body>
-                
-            </Accordion.Body>
+            <Accordion.Body></Accordion.Body>
           </Accordion.Item>
         </Accordion>
-        <GameComments />
+        <GameComments gameId={game.id} />
       </div>
     </div>
   );

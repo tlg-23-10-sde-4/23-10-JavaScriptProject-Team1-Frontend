@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-
-function GameComments() {
+import Auth from "../utils/authUtil";
+function GameComments(props) {
   const [formState, setFormState] = useState({ usercomment: "" });
 
   const handleChange = (evt) => {
@@ -12,11 +12,14 @@ function GameComments() {
     setFormState({ ...formState, [name]: value });
   };
 
+  console.log(Auth.getUserId());
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const data = {
       usercomment: formState.usercomment,
+      user_id: Auth.getUserId(),
+      game_id: props.gameId,
     };
     console.log(data);
   };

@@ -52,7 +52,6 @@ const GameDetails = () => {
 
         <div>
           <GameInfo game={gameData} />
-          {/* <GameComments game={gameData?.comments} /> */}
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function LoginPage() {
   const [formState, setFormState] = useState({ userEmail: "", password: "" });
@@ -52,6 +53,7 @@ function LoginPage() {
 
   return (
     <>
+      <Navbar />
       {/* is this working */}
       <div className="login-wrapper">
         <form className="login-form" onSubmit={handleFormSubmit}>

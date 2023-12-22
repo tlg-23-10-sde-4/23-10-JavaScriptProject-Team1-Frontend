@@ -8,7 +8,7 @@ import GetGameComments from "./GetGameComments";
 
 function GameInfo(props) {
   const game = props?.game;
-  console.log(game);
+  console.log(game.comments);
   //   console.log(game.developer);
 
   return (
@@ -47,7 +47,7 @@ function GameInfo(props) {
           <Accordion.Item eventKey="1">
             <Accordion.Header>Comments</Accordion.Header>
             <Accordion.Body>
-              <GetGameComments game={game.comments} />
+              <GetGameComments gameComments={game.comments} />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>

@@ -4,7 +4,9 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Auth from "../utils/authUtil";
-function GameComments(props) {
+import { toast } from 'react-toastify'
+
+function AddGameComments(props) {
   const [formState, setFormState] = useState({ usercomment: "" });
 
   const handleChange = (evt) => {
@@ -12,8 +14,7 @@ function GameComments(props) {
     setFormState({ ...formState, [name]: value });
   };
 
-  console.log(Auth.getUserId());
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     const data = {
@@ -21,7 +22,22 @@ function GameComments(props) {
       user_id: Auth.getUserId(),
       game_id: props.gameId,
     };
-    console.log(data);
+    const response = await fetch("http://localhost:3001/addComment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const resData = await response.json();
+
+    if (response.status === 200) {
+      toast.success(`${resData.message}`, {
+        position: toast.position.BOTTOM_RIGHT,
+        draggable: false,
+      });
+    }
   };
 
   return (
@@ -60,4 +76,4 @@ function GameComments(props) {
   );
 }
 
-export default GameComments;
+export default AddGameComments;

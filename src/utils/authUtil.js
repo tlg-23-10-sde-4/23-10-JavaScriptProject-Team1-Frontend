@@ -24,6 +24,19 @@ class AuthService {
         }
     }
 
+    getUserName() {
+        const token = Cookies.get('JWT');
+        console.log(token)
+        if(token) {
+            const decoded = jwtDecode(token);
+            const userName = decoded.userName
+            console.log(userName)
+            return userName
+        }else {
+            return null;
+        }
+    }
+
     isLoggedIn() {
         const token = this.getJwt()
         if (token) {

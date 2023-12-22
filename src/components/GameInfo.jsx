@@ -3,12 +3,14 @@ import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Accordion } from "react-bootstrap";
-import GameComments from "./GameComments";
+import AddGameComments from "./AddGameComments";
+import GetGameComments from "./GetGameComments";
 
 function GameInfo(props) {
   const game = props?.game;
   console.log(game);
   //   console.log(game.developer);
+
   return (
     <div className="d-flex column wrap">
       {/* <div className="jumbotron mt-1 custom-jumbotron">
@@ -44,10 +46,12 @@ function GameInfo(props) {
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>Comments</Accordion.Header>
-            <Accordion.Body></Accordion.Body>
+            <Accordion.Body>
+              <GetGameComments game={game.comments} />
+            </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-        <GameComments gameId={game.id} />
+        <AddGameComments gameId={game.id} />
       </div>
     </div>
   );

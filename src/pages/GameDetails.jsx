@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
-import GameComments from "../components/GameComments";
+import GameComments from "../components/AddGameComments";
 import GameInfo from "../components/GameInfo";
 
 const GameDetails = () => {

@@ -5,6 +5,9 @@ import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import GameComments from "../components/AddGameComments";
 import GameInfo from "../components/GameInfo";
+import Auth from "../utils/authUtil";
+import { Dna } from "react-loader-spinner";
+
 
 const GameDetails = () => {
   const { gameId } = useParams();
@@ -37,24 +40,35 @@ const GameDetails = () => {
   useEffect(() => {
     getGameById(gameId);
   }, [gameId]);
-  if (isLoading) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+  if (!Auth.isLoggedIn()) {
+    window.location.replace("/login");
   } else {
-    return (
-      <div>
-        <div>
-          <NavBar />
+    if (isLoading) {
+      return (
+        <div className="loading-animation">
+          <Dna
+            visible={true}
+            height="280"
+            width="280"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
         </div>
+      );
+    } else {
+      return (
+        <div>
+          <div>
+            <NavBar />
+          </div>
 
-        <div>
-          <GameInfo game={gameData} />
+          <div>
+            <GameInfo game={gameData} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 };
 

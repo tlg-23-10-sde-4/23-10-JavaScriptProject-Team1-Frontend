@@ -26,7 +26,6 @@ function GameCard({ game }) {
 }
 
 function GameCardGrid(props) {
-  const game = props.data.games;
   const [isLoading, setIsloading] = useState(true);
   const [gameData, setGameData] = useState([]);
   const [page, setPage] = useState(1);

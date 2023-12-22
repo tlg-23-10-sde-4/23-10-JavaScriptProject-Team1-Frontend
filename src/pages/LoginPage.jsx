@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Navbar from "../components/Navbar";
 
 function LoginPage() {
   const [formState, setFormState] = useState({ userEmail: "", password: "" });
@@ -51,6 +52,8 @@ function LoginPage() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="login-wrapper">
       <form className="login-form" onSubmit={handleFormSubmit}>
         <h1 className="welcomeback">Welcome Back</h1>
@@ -86,6 +89,7 @@ function LoginPage() {
         </div>
       </form>
     </div>
+            </>
   );
 }
 

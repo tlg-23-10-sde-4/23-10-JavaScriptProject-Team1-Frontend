@@ -1,10 +1,5 @@
-.body {
-    background: linear-gradient(
-    315deg,
-    hsla(218, 31%, 17%, 1) 0%,
-    hsla(0, 0%, 31%, 1) 100%,
-    hsla(200, 6%, 19%, 1) 100%
-  );
+.gameInfo-wrapper {
+  height: 100vh;
 }
 .accordian_header {
     background: linear-gradient(

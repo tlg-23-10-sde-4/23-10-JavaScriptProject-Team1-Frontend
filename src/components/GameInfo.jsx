@@ -9,11 +9,10 @@ import "../assets/css/GameInfo.css";
 
 function GameInfo(props) {
   const game = props?.game;
-  console.log(game.comments);
-  //   console.log(game.developer);
+  console.log(game);
 
   return (
-    <div className="d-flex column wrap body_container">
+    <div className="d-flex column wrap h-100 mt-3">
       {/* <div className="jumbotron mt-1 custom-jumbotron">
         <p>{game.description}</p>
       </div> */}
@@ -48,7 +47,7 @@ function GameInfo(props) {
           <Accordion.Item
             eventKey="1"
             className="comment_background"
-            style={{ height: "300px", overflowY: "auto" }}
+            style={{ maxHeight: "500px", overflowY: "auto" }}
           >
             <Accordion.Header>Comments</Accordion.Header>
             <Accordion.Body>

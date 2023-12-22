@@ -7,7 +7,7 @@ import GameComments from "../components/AddGameComments";
 import GameInfo from "../components/GameInfo";
 import Auth from "../utils/authUtil";
 import { Dna } from "react-loader-spinner";
-
+import Particle from "../components/Particles";
 
 const GameDetails = () => {
   const { gameId } = useParams();
@@ -58,12 +58,9 @@ const GameDetails = () => {
       );
     } else {
       return (
-        <div>
-          <div>
-            <NavBar />
-          </div>
-
-          <div>
+        <div className="gameInfo-wrapper">
+          <NavBar />
+          <div className="h-100 body_container">
             <GameInfo game={gameData} />
           </div>
         </div>

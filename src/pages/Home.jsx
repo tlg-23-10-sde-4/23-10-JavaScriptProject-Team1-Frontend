@@ -17,7 +17,6 @@ function Home() {
 
   return (
     <div className="homepage-container">
-      <Particles />
       <Navbar />
       <div className="d-flex p-2 justify-content-evenly align-items-center flex-wrap">
         <div className="jumbotron mt-1 custom-jumbotron">

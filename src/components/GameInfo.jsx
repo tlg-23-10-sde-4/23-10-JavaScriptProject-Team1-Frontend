@@ -12,11 +12,7 @@ function GameInfo(props) {
   console.log(game);
 
   return (
-    <div className="d-flex column wrap">
-      {/* <div className="jumbotron mt-1 custom-jumbotron">
-        <p>{game.description}</p>
-      </div> */}
-
+    <div className="d-flex column wrap h-100 mt-3">
       <div>
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={game.background_image} />
@@ -37,7 +33,7 @@ function GameInfo(props) {
             </ListGroup.Item>
           </ListGroup>
           <Card.Body>
-            <Card.Link href="#">Another Link</Card.Link>
+            <Card.Link href="#">Coming Soon</Card.Link>
           </Card.Body>
         </Card>
       </div>
@@ -47,7 +43,11 @@ function GameInfo(props) {
             <Accordion.Header>Description</Accordion.Header>
             <Accordion.Body>{game.description_raw}</Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="1">
+          <Accordion.Item
+            eventKey="1"
+            className="comment_background"
+            style={{ maxHeight: "500px", overflowY: "auto" }}
+          >
             <Accordion.Header>Comments</Accordion.Header>
             <Accordion.Body>
               <GetGameComments game={game.comments} />

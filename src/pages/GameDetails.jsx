@@ -5,9 +5,11 @@ import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import GameComments from "../components/AddGameComments";
 import GameInfo from "../components/GameInfo";
-import StarRating from "../components/StarRating/StarRating";
+import Auth from "../utils/authUtil";
+import { Dna } from "react-loader-spinner";
+import Particle from "../components/Particles";
 
-  const GameDetails = () => {
+const GameDetails = () => {
   const { gameId } = useParams();
 
   // You need these two together (Move these to the GameDetails Page)
@@ -16,7 +18,7 @@ import StarRating from "../components/StarRating/StarRating";
   const [gameData, setGameData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const getGameById = async (gameId) => {
-  const url = `http://localhost:3001/api/gameById/${gameId}`;
+    const url = `http://localhost:3001/api/gameById/${gameId}`;
 
     const response = await fetch(url, {
       method: "GET",
@@ -37,6 +39,7 @@ import StarRating from "../components/StarRating/StarRating";
   useEffect(() => {
     getGameById(gameId);
   }, [gameId]);
+
   if (isLoading) {
     return (
       <div>
@@ -44,18 +47,30 @@ import StarRating from "../components/StarRating/StarRating";
       </div>
     );
   } else {
-    return (
-      <div>
-        <div>
+    if (isLoading) {
+      return (
+        <div className="loading-animation">
+          <Dna
+            visible={true}
+            height="280"
+            width="280"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className="gameInfo-wrapper">
           <NavBar />
+          <div className="h-100 body_container">
+            <GameInfo game={gameData} />
+          </div>
         </div>
-
-        <div>
-          <GameInfo game={gameData} />
-        </div>
-      </div>
-    );
-  }
-};
+      );
+    }
+  };
+}
 
 export default GameDetails;

@@ -3,12 +3,16 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 0px;
+  max-width: 100vw;
+  overflow: hidden;
+  contain: content;
+  z-index: 3;
 }
 
 #home,
 #games,
 #login {
-  margin-left: 10px;
+  margin-right: 10px;
   padding: 3px;
   border: 1px solid #dceaff;
   text-align: center;
@@ -117,44 +121,44 @@ nav {
 .wave {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 3000% 2000% 0 0;
-  position: absolute;
+  position: fixed;
   width: 2000%;
   height: 2em;
   animation: wave 10s -3s linear infinite;
   transform: translate3d(0, 0, 0);
   opacity: 0.2;
-  bottom: -1.5em;
+  top: -7.4px;
   left: 0;
-  z-index: -2;
+  z-index: -3;
 }
 
 .wave:nth-of-type(2) {
   /* Wave 2 */
-  background: rgba(255, 255, 255, 0.3);
-  bottom: -1em;
+  background: rgba(255, 255, 255, 0.2);
+
   animation: wave 10s -5s linear infinite;
   opacity: 0.4;
-  z-index: -2;
+  z-index: -3;
   height: 3em;
 }
 
 .wave:nth-of-type(3) {
   /* Wave 3 */
-  background: rgba(255, 255, 255, 0.45);
-  bottom: -2em;
+  background: rgba(255, 255, 255, 0.3);
+
   animation: wave 10s -10s linear infinite;
   opacity: 0.6;
-  z-index: -2; /* Adjusted z-index */
+  z-index: -3; /* Adjusted z-index */
   height: 4em;
 }
 
 .wave:nth-of-type(4) {
   /* Wave 4 */
-  background: rgba(255, 255, 255, 0.6);
-  bottom: -2em;
+  background: rgba(255, 255, 255, 0.4);
+
   animation: wave 10s -15s linear infinite;
   opacity: 0.8;
-  z-index: -2; /* Adjusted z-index */
+  z-index: -3; /* Adjusted z-index */
   height: 5em;
 }
 

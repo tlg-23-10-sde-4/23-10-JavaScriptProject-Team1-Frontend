@@ -26,7 +26,7 @@ function LoginPage() {
 
     console.log(data);
 
-    const response = await fetch("https://konbon-backend-b295c756b711.herokuapp.com/auth/login", {
+    const response = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function LoginPage() {
 
     const resData = await response.json()
     console.log(response);
-    
+
     if (response.status === 200) {
       toast.success(`${resData.message}`, {
         position: toast.POSITION.TOP_CENTER,

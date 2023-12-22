@@ -25,13 +25,14 @@ function GameCard({ game }) {
   );
 }
 
-function GameCardGrid(props) {
+function GameCardGrid() {
   const [isLoading, setIsloading] = useState(true);
   const [gameData, setGameData] = useState([]);
   const [page, setPage] = useState(1);
 
   const fetchGameData = async () => {
-    const url = `http://localhost:3001/api/allGames/${page}`;
+    setIsloading(true)
+    const url = `https://konbon-backend-b295c756b711.herokuapp.com/api/allGames/${page}`;
 
     const response = await fetch(url, {
       method: "GET",

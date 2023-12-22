@@ -19,20 +19,9 @@ import gameHandler from "./utils/gameHandler";
 import GameDetails from "./pages/GameDetails";
 
 function App() {
-  const [games,setGames] = useState([]);
+  const [games, setGames] = useState([]);
   const [isLoading, setIsloading] = useState(true);
   const [user, setUser] = useState({});
-
-  // Fetch the game data in top level (Here in the app.js) so we can pass it as a prop all of our pages
-  const fetchGameData = async () => {
-    const gameData = await gameHandler.fetchGames();
-    setGames(gameData.games);
-    setIsloading(false);
-  }
-
-  useEffect(() => {
-    fetchGameData();
-  }, []);
 
   const data ={ isLoading, setIsloading, games, user }
   return (

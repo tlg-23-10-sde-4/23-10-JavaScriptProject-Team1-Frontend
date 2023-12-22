@@ -1,25 +1,268 @@
-.homepage-container {
-    height: 100vh;
-    background-color: #444444;
+:root {
+  --color0: #00f2ff;
+  --color1: #00e5ff;
+  --color2: #00d9ff;
+  --color3: #00ccff;
+  --color4: #00c3ff;
+  --color5: #00b7ff;
+  --color6: #00aaff;
+  --color7: #009dff;
+  --color8: #0091ff;
+  --color9: #0084ff;
+}
+body {
+  background-color: #000000;
+  color: aliceblue;
+  margin: 0;
+}
+.card-body {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-container {
-    height: 300px;
-    width: 300px;
+  max-width: fit-content;
+  max-height: fit-content;
+  font-family: "M PLUS 1 Code";
+  color: rgb(0, 0, 0);
+  font-size: 9pt;
+  border-radius: 5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-inner {
+  border-radius: 5rem;
+  width: 15vw; /* Adjust the width as needed */
+  margin: auto; /* Center the carousel horizontally */
+}
+.card {
+  background-color: #000000;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  width: 15vw; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1/1.5;
+  position: relative;
+  border-radius: 5.3rem;
+  z-index: -1;
+  margin: auto; /* Center the card horizontally */
 }
 
 .homepage-carousel-image {
-    height: 100%;
-    width: 100%
+  height: 100%;
+  width: 100%;
 }
 
-.custom-jumbotron {
-    width: 60%;
-    color: white;
+.pitch {
+  font-family: "Apple";
+  margin: 0;
+  font-weight: 500;
+  font-size: 10pt;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-wrap: wrap;
+  text-align: center;
+  padding-bottom: 0;
 }
 
-.homepage-carousel-caption {
-    background-color: black;
-    max-width: fit-content;
-    max-height: fit-content;
+#all-about-us {
+  font-family: "Caveat";
+  font-size: 70pt;
+}
+
+#we-connect-people {
+  font-family: "Caveat";
+  font-size: 20pt;
+}
+#B::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+  z-index: -1;
+  transition: width 0.3s ease-out;
+}
+
+#B:hover::before {
+  width: 100%;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  height: 60em;
+  inset: 1em;
+  width: 0;
+  background: linear-gradient(90deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+  z-index: -3;
+  transition: width 0.3s ease-out;
+}
+
+.card:hover::before {
+  width: 100%;
+  height: 60em;
+}
+
+#B {
+  padding: 3;
+  margin: 0;
+  text-align: center;
+  margin-top: 0;
+  font-family: Apple;
+  border-radius: 5rem;
+  font-size: 10pt;
+  position: relative;
+  z-index: 5;
+}
+
+#B:hover {
+  font-size: 30pt;
+}
+
+#B::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.601), rgba(255, 255, 255, 0.314));
+  z-index: -10;
+  opacity: 0;
+  transition: opacity 0.2s ease-in, transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+#B:hover::before {
+  opacity: 0.3;
+  transform: scale(2);
+  filter: blur(2rem);
+}
+#1 {
+  border-radius: 3rem;
+}
+.carousel-inner {
+  margin-top: 15em;
+  border-radius: 5rem;
+  height: 70em;
+
+  width: 19vw;
+}
+
+.card {
+  display: flex;
+  width: 20vw;
+  height: 70em;
+  flex-direction: column;
+  aspect-ratio: 1/1.5;
+  position: relative;
+  border-radius: 5.3rem;
+  background-color: #000000;
+  z-index: 0;
+  margin: auto; /* Center the card horizontally */
+}
+.card::before,
+.card::after {
+  margin-top: 30em;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  content: "";
+  position: absolute;
+  height: 60em;
+  inset: -0.01rem;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--color0),
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4),
+    var(--color5),
+    var(--color6),
+    var(--color7),
+    var(--color8),
+    var(--color9),
+    var(--color8),
+    var(--color7),
+    var(--color6),
+    var(--color5),
+    var(--color4),
+    var(--color3),
+    var(--color2),
+    var(--color0)
+  );
+  border-radius: inherit;
+  animation: rotation 3s linear infinite;
+}
+.card::after {
+  filter: blur(1.2rem);
+  display: flex;
+  flex-direction: row;
+}
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+.card {
+  width: 20vw;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1/1.5;
+  position: relative;
+  border-radius: 5.3rem;
+  background-color: #000000;
+  z-index: 5;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  opacity: 0.8;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  height: 70vh;
+  width: 0;
+  inset: -0.2em;
+  background: linear-gradient(90deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+  z-index: 0;
+  transition: width 0.3s ease-out;
+}
+
+.card:hover::before {
+  width: 100%;
 }

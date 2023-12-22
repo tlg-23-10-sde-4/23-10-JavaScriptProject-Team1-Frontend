@@ -3,11 +3,14 @@ import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Accordion } from "react-bootstrap";
+import AddGameComments from "./AddGameComments";
+import GetGameComments from "./GetGameComments";
 
 function GameInfo(props) {
   const game = props?.game;
   console.log(game);
   //   console.log(game.developer);
+
   return (
     <div className="d-flex column wrap">
       {/* <div className="jumbotron mt-1 custom-jumbotron">
@@ -26,10 +29,11 @@ function GameInfo(props) {
           <ListGroup className="list-group-flush">
             <ListGroup.Item>Company: {game?.developers[0].name}</ListGroup.Item>
             <ListGroup.Item>Rating: {game?.esrb_rating.name}</ListGroup.Item>
-            <ListGroup.Item>Kon-Bon Stars: <Card.Link href="#">Card Link</Card.Link></ListGroup.Item>
+            <ListGroup.Item>
+              Kon-Bon Stars: <Card.Link href="#">Card Link</Card.Link>
+            </ListGroup.Item>
           </ListGroup>
           <Card.Body>
-            
             <Card.Link href="#">Another Link</Card.Link>
           </Card.Body>
         </Card>
@@ -41,12 +45,13 @@ function GameInfo(props) {
             <Accordion.Body>{game.description_raw}</Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header></Accordion.Header>
+            <Accordion.Header>Comments</Accordion.Header>
             <Accordion.Body>
-              
+              <GetGameComments game={game.comments} />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
+        <AddGameComments gameId={game.id} />
       </div>
     </div>
   );

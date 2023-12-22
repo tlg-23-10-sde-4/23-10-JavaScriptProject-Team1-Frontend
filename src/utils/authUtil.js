@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 // function for getting the cookies
 
 class AuthService {
-    getJwt() { 
+    getJwt() {
         const token = Cookies.get('JWT');
         return token;
     }

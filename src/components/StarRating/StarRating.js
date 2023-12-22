@@ -30,4 +30,4 @@ const StarRatingComponent = (prop) => {
     );
 };
 
-export default StarRatingComponent;
+export default StarRatingComponent; //test 

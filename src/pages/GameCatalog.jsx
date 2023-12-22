@@ -5,7 +5,6 @@ import NavBar from "../components/Navbar";
 
 const GameCatalog = (props) => {
   const { games, isLoading } = props.data;
-  console.log(games);
 
   if (isLoading) {
     return (

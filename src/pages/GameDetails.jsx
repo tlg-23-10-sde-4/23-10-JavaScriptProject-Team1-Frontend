@@ -5,21 +5,18 @@ import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import GameComments from "../components/AddGameComments";
 import GameInfo from "../components/GameInfo";
-import Auth from "../utils/authUtil";
-import { Dna } from "react-loader-spinner";
+import StarRating from "../components/StarRating/StarRating";
 
-
-const GameDetails = () => {
+  const GameDetails = () => {
   const { gameId } = useParams();
 
   // You need these two together (Move these to the GameDetails Page)
   // Call the getGameById in a 'useEffect' hook.
   // Create a local 'isLoading' state to show loading screen while we get the data
   const [gameData, setGameData] = useState({});
-
   const [isLoading, setIsLoading] = useState(true);
   const getGameById = async (gameId) => {
-    const url = `http://localhost:3001/api/gameById/${gameId}`;
+  const url = `http://localhost:3001/api/gameById/${gameId}`;
 
     const response = await fetch(url, {
       method: "GET",
@@ -40,35 +37,24 @@ const GameDetails = () => {
   useEffect(() => {
     getGameById(gameId);
   }, [gameId]);
-  if (!Auth.isLoggedIn()) {
-    window.location.replace("/login");
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   } else {
-    if (isLoading) {
-      return (
-        <div className="loading-animation">
-          <Dna
-            visible={true}
-            height="280"
-            width="280"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
-        </div>
-      );
-    } else {
-      return (
+    return (
+      <div>
         <div>
-          <div>
-            <NavBar />
-          </div>
-
-          <div>
-            <GameInfo game={gameData} />
-          </div>
+          <NavBar />
         </div>
-      );
-    }
+
+        <div>
+          <GameInfo game={gameData} />
+        </div>
+      </div>
+    );
   }
 };
 

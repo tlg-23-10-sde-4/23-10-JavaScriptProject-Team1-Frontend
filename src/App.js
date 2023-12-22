@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React,{useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,13 +16,15 @@ import GameCatalog from "./pages/GameCatalog";
 import Profile from "./pages/Profile";
 import gameHandler from "./utils/gameHandler";
 import GameDetails from "./pages/GameDetails";
+import StarRating from "./components/StarRating/StarRating";
 
 function App() {
   const [games, setGames] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
 
-  const data ={ isLoading, setIsloading, games, user }
+  const data = { isLoading, setIsLoading, games, user };
+
   return (
     <Router>
       <ToastContainer theme="colored" autoClose={2000} />
@@ -33,8 +35,9 @@ function App() {
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/GameCatalog" element={<GameCatalog data={data} />} />
         <Route path="/profile" element={<Profile data={data} />} />
-        <Route path="/GameDetails/:gameId" element={<GameDetails/>}/>
-      </Routes>
+        <Route path="/GameDetails/:gameId" element={<GameDetails />} />
+              </Routes>
+      
     </Router>
   );
 }

@@ -1,18 +1,23 @@
-import React, { useEffect } from "react";
+import { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import Navbar from "../components/Navbar";
+import Particles from "../components/Particles";
 import { Link } from "react-router-dom";
 import doomguy from "../assets/images/doomguy-bg.webp";
 import okage from "../assets/images/okage-bg.webp";
 import supermariogalaxy from "../assets/images/supermariogalaxy-bg.webp";
 import Auth from "../utils/authUtil";
 
+ 
+
 function Home() {
+  const [init, setInit] = useState(false);
   const userId = Auth.getUserId();
   const isLoggedIn = Auth.isLoggedIn();
 
   return (
     <div className="homepage-container">
+      <Particles />
       <Navbar />
       <div className="d-flex p-2 justify-content-evenly align-items-center flex-wrap">
         <div className="jumbotron mt-1 custom-jumbotron">

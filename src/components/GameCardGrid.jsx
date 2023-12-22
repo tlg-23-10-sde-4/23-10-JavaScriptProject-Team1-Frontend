@@ -32,7 +32,7 @@ function GameCardGrid() {
 
   const fetchGameData = async () => {
     setIsloading(true)
-    const url = `https://konbon-backend-b295c756b711.herokuapp.com/api/allGames/${page}`;
+    const url = `http://localhost:3001/api/allGames/${page}`;
 
     const response = await fetch(url, {
       method: "GET",

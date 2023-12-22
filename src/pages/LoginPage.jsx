@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import { toast } from "react-toastify";
 
 function LoginPage() {
@@ -51,6 +52,8 @@ function LoginPage() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="login-wrapper">
       <form className="login-form" onSubmit={handleFormSubmit}>
         <h1 className="welcomeback">Welcome Back</h1>
@@ -86,6 +89,7 @@ function LoginPage() {
         </div>
       </form>
     </div>
+            </>
   );
 }
 

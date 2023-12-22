@@ -13,9 +13,9 @@ class AuthService {
     getUserId() {
         const token = this.getJwt();
         console.log(token)
-        if (token) {
+        if(token) {
 
-            const decoded = jwtDecode(token);
+            const decoded =  jwtDecode(token);
             const userId = decoded.userId
             console.log(userId)
             return userId
@@ -27,12 +27,12 @@ class AuthService {
     getUsername() {
         const token = Cookies.get('JWT');
         console.log(token)
-        if (token) {
+        if(token) {
             const decoded = jwtDecode(token);
             const userName = decoded.username
             console.log(userName)
             return userName
-        } else {
+        }else {
             return null;
         }
     }

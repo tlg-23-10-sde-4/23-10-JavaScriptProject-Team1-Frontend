@@ -1,52 +1,100 @@
 .Navbar {
-  display: flexbox;
-  contain: content;
-  padding-top: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: 0px;
-  margin-top: 0px;
 }
+
 #home,
 #games,
 #login {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
-  margin-bottom: 0px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
+  margin-left: 10px;
+  padding: 3px;
+  border: 1px solid #dceaff;
   text-align: center;
   text-decoration: none;
   font-size: 15px;
-  font-family: system-ui, -apple-system;
-  color: rgb(255, 255, 255);
-  width: 7rem;
+  font-family: "M PLUS 1 Code";
+  color: black; /* Set font color to black */
+  font-weight: 500;
+  width: 8rem;
   height: 2.5rem;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#nav-buttons-container {
+  margin-right: 10px;
+  contain: content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+#nav-buttons-container a {
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "M PLUS 1 Code";
+  color: black;
+  font-weight: 500;
+  background-color: azure;
+  padding-right: 10px;
+  border: 1px solid #dceaff;
+  border-radius: 0.5em;
+  height: 2.5rem;
+  width: 150px;
+  text-wrap: nowrap;
 }
 
 #Navbar-title {
-  font-family: Cascadia Code;
+  font-family: "Press Start 2p";
   font-weight: bold;
+  font-size: 30pt;
+  padding-left: 10px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+#nav-buttons-container a:hover,
+#nav-buttons-container button:hover{
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+
+#nav-buttons-container a svg {
+  margin-right: 10px;
+}
+
+.wave-container {
+  position: relative;
+  overflow: hidden;
 }
 
 nav {
-  z-index: 1;
-  margin: auto;
+  width: 100vw;
+  z-index: 0; /* You can adjust this value based on your layout */
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
   background: linear-gradient(
     315deg,
-    rgb(213, 102, 206) 3%,
-    rgb(53, 146, 239) 38%,
-    rgba(48, 238, 226, 1) 68%,
-    rgb(230, 76, 76) 98%
+    rgb(255, 0, 170) 3%,
+    rgb(149, 0, 255) 30%,
+    rgb(0, 43, 255) 60%,
+    rgb(0, 234, 255) 90%,
+    rgb(0, 255, 85) 120%,
+    rgb(106, 255, 0) 130%,
+    rgb(255, 213, 0) 140%,
+    rgb(255, 21, 0) 150%
   );
-  animation: gradient 20s linear infinite;
-  background-size: 2000% 1000%;
+  animation: gradient 10s linear infinite;
+  background-size: 5000% 5000%;
   background-attachment: relative;
 }
 
@@ -62,51 +110,68 @@ nav {
   }
 }
 
+.wave-container {
+  position: relative;
+  overflow: hidden;
+}
+
 .wave {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 1000% 1000% 0 0;
-  position: fixed;
-  width: 200%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3000% 2000% 0 0;
+  position: absolute;
+  width: 2000%;
   height: 2em;
   animation: wave 10s -3s linear infinite;
   transform: translate3d(0, 0, 0);
-  opacity: 0.8;
-  bottom: 0;
+  opacity: 0.2;
+  bottom: -1.5em;
   left: 0;
-  z-index: -1;
+  z-index: -2;
 }
 
 .wave:nth-of-type(2) {
-  background: rgb(255, 255, 255, 0.3);
-  bottom: -1.25em;
-  animation: wave 18s linear reverse infinite;
-  opacity: 0.8;
+  /* Wave 2 */
+  background: rgba(255, 255, 255, 0.3);
+  bottom: -1em;
+  animation: wave 10s -5s linear infinite;
+  opacity: 0.4;
+  z-index: -2;
+  height: 3em;
 }
 
 .wave:nth-of-type(3) {
-  background: rgb(255, 255, 255, 0.4);
-  bottom: -2.5em;
-  animation: wave 20s -1s reverse infinite;
-  opacity: 0.9;
+  /* Wave 3 */
+  background: rgba(255, 255, 255, 0.45);
+  bottom: -2em;
+  animation: wave 10s -10s linear infinite;
+  opacity: 0.6;
+  z-index: -2; /* Adjusted z-index */
+  height: 4em;
+}
+
+.wave:nth-of-type(4) {
+  /* Wave 4 */
+  background: rgba(255, 255, 255, 0.6);
+  bottom: -2em;
+  animation: wave 10s -15s linear infinite;
+  opacity: 0.8;
+  z-index: -2; /* Adjusted z-index */
+  height: 5em;
 }
 
 @keyframes wave {
   2% {
     transform: translateX(1);
   }
-
   25% {
     transform: translateX(-25%);
   }
-
   50% {
     transform: translateX(-50%);
   }
-
   75% {
     transform: translateX(-25%);
   }
-
   100% {
     transform: translateX(1);
   }

@@ -4,7 +4,8 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Auth from "../utils/authUtil";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
+import "../assets/css/GetGameComments.css"
 
 function AddGameComments(props) {
   const [formState, setFormState] = useState({ usercomment: "" });
@@ -18,11 +19,11 @@ function AddGameComments(props) {
     event.preventDefault();
 
     const data = {
-      usercomment: formState.usercomment,
+      text: formState.usercomment,
       user_id: Auth.getUserId(),
       game_id: props.gameId,
     };
-    const response = await fetch("http://localhost:3001/addComment", {
+    const response = await fetch("http://localhost:3001/comment/addComment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,14 +32,22 @@ function AddGameComments(props) {
     });
 
     const resData = await response.json();
-
+    
     if (response.status === 200) {
-      toast.success(`${resData.message}`, {
-        position: toast.position.BOTTOM_RIGHT,
+      toast.success(`Cool Comment`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        draggable: false,
+      });
+      window.location.reload();
+    } else if (response.status === 500) {
+      toast.success(`Fix your comment`, {
+        position: toast.POSITION.BOTTOM_CENTER,
         draggable: false,
       });
     }
   };
+
+  const username = Auth.getUsername();
 
   return (
     <div>
@@ -46,8 +55,8 @@ function AddGameComments(props) {
         <form onSubmit={handleFormSubmit}>
           <Card>
             <Card.Header>Add a Comment</Card.Header>
-            <Card.Body className="d-flex flex-column">
-              <Card.Title>This will be the user ID</Card.Title>
+            <Card.Body  className="d-flex flex-column comment_background">
+              <Card.Title>{username}</Card.Title>
               <Form.Group>
                 {/* <textarea
                   name="usercomment"
@@ -64,7 +73,7 @@ function AddGameComments(props) {
                   placeholder="Leave a comment here"
                   style={{ height: "100px" }}
                 />
-                <Button type="submit" variant="dark">
+                <Button className="butn" type="submit" variant="dark">
                   Submit
                 </Button>
               </Form.Group>

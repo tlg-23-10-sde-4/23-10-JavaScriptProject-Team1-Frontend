@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad, faHouse, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import "../assets/css/Navbar.css";
+import Auth from '../utils/authUtil';
 
 const Navbar = () => {
   const location = useLocation();
@@ -41,12 +42,23 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="col">
-          <Link id="login" to="/login" className={activeButton === "login" ? "active" : ""}>
-            <FontAwesomeIcon icon={faDoorOpen} />
-            Login
-          </Link>
-        </div>
+        {Auth.isLoggedIn() ? (
+          <div className="col">
+            <button onClick={() => Auth.logout()} id="login"  className={activeButton === "login" ? "active" : ""}>
+              <FontAwesomeIcon icon={faDoorOpen} />
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="col">
+            <Link id="login" to="/login" className={activeButton === "login" ? "active" : ""}>
+              <FontAwesomeIcon icon={faDoorOpen} />
+              Login
+            </Link>
+          </div>
+        )}
+
+
       </>
     );
   };

@@ -36,16 +36,18 @@ function LoginPage() {
     });
 
     const resData = await response.json()
-
+    console.log(response);
+    
     if (response.status === 200) {
       toast.success(`${resData.message}`, {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,
       });
       setTimeout(() => {
-        // window.location.replace("/");
+        window.location.replace("/");
       }, 2000)
     } else {
+      
       toast.error(`${resData.message}`, {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,

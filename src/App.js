@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import React,{useState} from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -12,42 +12,32 @@ import "./assets/css/SignUpPage.css"
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-// import ParticlesConfig from "./components/config/ParticlesConfig";
 import GameCatalog from "./pages/GameCatalog";
 import Profile from "./pages/Profile";
 import gameHandler from "./utils/gameHandler";
 import GameDetails from "./pages/GameDetails";
+import StarRating from "./components/StarRating/StarRating";
 
 function App() {
-  const [games,setGames] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+  const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
 
-  // Fetch the game data in top level (Here in the app.js) so we can pass it as a prop all of our pages
-  const fetchGameData = async () => {
-    const gameData = await gameHandler.fetchGames();
-    setGames(gameData.games);
-    setIsloading(false);
-  }
+  const data = { isLoading, setIsLoading, games, user };
 
-  useEffect(() => {
-    fetchGameData();
-  }, []);
-
-  const data ={ isLoading, setIsloading, games, user }
   return (
     <Router>
       <ToastContainer theme="colored" autoClose={2000} />
       <Routes>
         {/* Routes to the pages we want to show */}
-        {/* <Route path="/ParticlesBg" element={<ParticlesConfig />} /> */}
         <Route path="/" element={<Home data={data} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/GameCatalog" element={<GameCatalog data={data} />} />
         <Route path="/profile" element={<Profile data={data} />} />
-        <Route path="/GameDetails/:gameId" element={<GameDetails/>}/>
-      </Routes>
+        <Route path="/GameDetails/:gameId" element={<GameDetails />} />
+              </Routes>
+      
     </Router>
   );
 }

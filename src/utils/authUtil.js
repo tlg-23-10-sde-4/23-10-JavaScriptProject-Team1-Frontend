@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 // function for getting the cookies
 
 class AuthService {
-    getJwt() { 
+    getJwt() {
         const token = Cookies.get('JWT');
         return token;
     }
@@ -13,11 +13,25 @@ class AuthService {
     getUserId() {
         const token = this.getJwt();
         console.log(token)
-        if(token) {
-            const decoded =  jwtDecode(token);
+        if (token) {
+
+            const decoded = jwtDecode(token);
             const userId = decoded.userId
             console.log(userId)
             return userId
+        } else {
+            return null;
+        }
+    }
+
+    getUsername() {
+        const token = Cookies.get('JWT');
+        console.log(token)
+        if (token) {
+            const decoded = jwtDecode(token);
+            const userName = decoded.username
+            console.log(userName)
+            return userName
         } else {
             return null;
         }
@@ -32,6 +46,11 @@ class AuthService {
         } else {
             return false;
         }
+    }
+
+    logout() {
+        Cookies.remove("JWT");
+        window.location.replace("/");
     }
 }
 

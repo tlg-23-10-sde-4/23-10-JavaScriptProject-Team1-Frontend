@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Auth from '../utils/authUtil';
+
 
 function LoginPage() {
   const [formState, setFormState] = useState({ userEmail: "", password: "" });
@@ -33,6 +36,7 @@ function LoginPage() {
     });
 
     const resData = await response.json()
+    console.log(response);
 
     if (response.status === 200) {
       toast.success(`${resData.message}`, {
@@ -43,6 +47,7 @@ function LoginPage() {
         window.location.replace("/");
       }, 2000)
     } else {
+      
       toast.error(`${resData.message}`, {
         position: toast.POSITION.TOP_CENTER,
         draggable: false,
@@ -50,43 +55,50 @@ function LoginPage() {
     }
   };
 
-  return (
-    <div className="login-wrapper">
-      <form className="login-form" onSubmit={handleFormSubmit}>
-        <h1 className="welcomeback">Welcome Back</h1>
-        <div className="form-section">
-          <label htmlFor="userEmail">Email</label>
-          <input
-            type="text"
-            required
-            className="form-input"
-            id="userEmail"
-            name="userEmail"
-            onChange={handleChange}
-            placeholder="email@example.com"
-          />
+  if (Auth.isLoggedIn()) {
+    window.location.replace('/');
+  } else {
+    return (
+      <>
+        <Navbar />
+        <div className="login-wrapper">
+          <form className="login-form" onSubmit={handleFormSubmit}>
+            <h1 className="welcomeback">Welcome Back</h1>
+            <div className="form-section">
+              <label htmlFor="userEmail">Email</label>
+              <input
+                type="text"
+                required
+                className="form-input"
+                id="userEmail"
+                name="userEmail"
+                onChange={handleChange}
+                placeholder="email@example.com"
+              />
+            </div>
+            <div className="form-section">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                className="form-input"
+                name="password"
+                id="password"
+                onChange={handleChange}
+                placeholder="SunnySunShine232"
+                value={formState.password}
+              />
+            </div>
+            <input type="submit" value="Log In" />
+            <div className="mt-3">
+              <p className="text-light">
+                Dont have an account yet? <Link to="/signup">Signup Here</Link>
+              </p>
+            </div>
+          </form>
         </div>
-        <div className="form-section">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            className="form-input"
-            name="password"
-            id="password"
-            onChange={handleChange}
-            placeholder="SunnySunShine232"
-            value={formState.password}
-          />
-        </div>
-        <input type="submit" value="Log In" />
-        <div className="mt-3">
-          <p className="text-light">
-            Dont have an account yet? <Link to="/signup">Signup Here</Link>
-          </p>
-        </div>
-      </form>
-    </div>
-  );
+      </>
+    );
+  }
 }
 
 export default LoginPage;

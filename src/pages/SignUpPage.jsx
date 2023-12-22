@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
+import Auth from '../utils/authUtil';
 
 const SignUpPage = () => {
   const [formState, setFormState] = useState({ email: "", username: "", password: "" });
@@ -52,52 +53,56 @@ const SignUpPage = () => {
     }
   };
 
-  return (
-    <>
-      <Navbar />
-      <div className="signup-form-wrapper">
-        <form onSubmit={postNewUserSignUp} className="signup-form">
-          <h1 className="text-light">Create an account</h1>
-          <div className="signup-form-group">
-            <label className="signup-form-label">Email:</label>
-            <input
-              required
-              type="text"
-              name="email"
-              placeholder="Enter email: email@example.com"
-              onChange={handleInputChange}
-              className="signup-form-input"
-            />
-          </div>
-          <div className="signup-form-group">
-            <label className="signup-form-label">Username:</label>
-            <input
-              required
-              type="text"
-              name="username"
-              placeholder="Create username"
-              onChange={handleInputChange}
-              className="signup-form-input"
-            />
-          </div>
-          <div className="signup-form-group">
-            <label className="signup-form-label">Password:</label>
-            <input
-              required
-              type="password"
-              name="password"
-              placeholder="Create password"
-              onChange={handleInputChange}
-              className="signup-form-input"
-            />
-          </div>
-          <button type="submit" className="signup-button">
-            <span>Sign Up</span><i></i>
-          </button>
-        </form>
-      </div>
-    </>
-  );
+  if(Auth.isLoggedIn()) {
+    window.location.replace('/');
+  } else {
+    return (
+      <>
+        <Navbar />
+        <div className="signup-form-wrapper">
+          <form onSubmit={postNewUserSignUp} className="signup-form">
+            <h1 className="text-light">Create an account</h1>
+            <div className="signup-form-group">
+              <label className="signup-form-label">Email:</label>
+              <input
+                required
+                type="text"
+                name="email"
+                placeholder="Enter email: email@example.com"
+                onChange={handleInputChange}
+                className="signup-form-input"
+              />
+            </div>
+            <div className="signup-form-group">
+              <label className="signup-form-label">Username:</label>
+              <input
+                required
+                type="text"
+                name="username"
+                placeholder="Create username"
+                onChange={handleInputChange}
+                className="signup-form-input"
+              />
+            </div>
+            <div className="signup-form-group">
+              <label className="signup-form-label">Password:</label>
+              <input
+                required
+                type="password"
+                name="password"
+                placeholder="Create password"
+                onChange={handleInputChange}
+                className="signup-form-input"
+              />
+            </div>
+            <button type="submit" className="signup-button">
+              <span>Sign Up</span><i></i>
+            </button>
+          </form>
+        </div>
+      </>
+    );
+  }
 };
 
 export default SignUpPage;

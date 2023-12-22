@@ -9,7 +9,7 @@ function GameComment(props) {
   console.log(comments);
   return (
     <div>
-      {comments.map((comment) => {
+      {comments.map((comment) => (
         <Card key={comment.id}>
           <Card.Header>{userName}</Card.Header>
           <Card.Body>
@@ -20,8 +20,8 @@ function GameComment(props) {
               </footer>
             </blockquote>
           </Card.Body>
-        </Card>;
-      })}
+        </Card>
+      ))}
     </div>
   );
 }

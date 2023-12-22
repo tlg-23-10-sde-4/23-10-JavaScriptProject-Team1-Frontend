@@ -16,7 +16,6 @@ const GameDetails = () => {
   // Call the getGameById in a 'useEffect' hook.
   // Create a local 'isLoading' state to show loading screen while we get the data
   const [gameData, setGameData] = useState({});
-
   const [isLoading, setIsLoading] = useState(true);
   const getGameById = async (gameId) => {
     const url = `http://localhost:3001/api/gameById/${gameId}`;
@@ -40,8 +39,13 @@ const GameDetails = () => {
   useEffect(() => {
     getGameById(gameId);
   }, [gameId]);
-  if (!Auth.isLoggedIn()) {
-    window.location.replace("/login");
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   } else {
     if (isLoading) {
       return (
@@ -66,7 +70,7 @@ const GameDetails = () => {
         </div>
       );
     }
-  }
-};
+  };
+}
 
 export default GameDetails;

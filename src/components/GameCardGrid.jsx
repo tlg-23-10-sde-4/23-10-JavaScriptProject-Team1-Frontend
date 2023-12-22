@@ -31,8 +31,8 @@ function GameCardGrid() {
   const [page, setPage] = useState(1);
 
   const fetchGameData = async () => {
-    setIsloading(true);
-const url = `http://localhost:3001/api/allGames/${page}`;
+    setIsloading(true)
+    const url = `http://localhost:3001/api/allGames/${page}`;
 
     const response = await fetch(url, {
       method: "GET",

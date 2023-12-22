@@ -5,15 +5,19 @@ import Cookies from 'js-cookie';
 // function for getting the cookies
 
 class AuthService {
-    getJwt() {
-        return  Cookies.get('JWT')
+    getJwt() { 
+        const token = Cookies.get('JWT');
+        return token;
     }
 
     getUserId() {
-        const token = this.getJwt()
+        const token = this.getJwt();
+        console.log(token)
         if(token) {
-            const decoded = jwtDecode(token);
-            return decoded.userId
+            const decoded =  jwtDecode(token);
+            const userId = decoded.userId
+            console.log(userId)
+            return userId
         } else {
             return null;
         }

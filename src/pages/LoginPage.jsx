@@ -35,7 +35,6 @@ function LoginPage() {
       credentials: "include",
     });
 
-    console.log(response);
     const resData = await response.json()
 
     if (response.status === 200) {

@@ -33,6 +33,11 @@ class AuthService {
             return false;
         }
     }
+
+    logout() {
+        Cookies.remove("JWT");
+        window.location.replace("/");
+    }
 }
 
 export default new AuthService;

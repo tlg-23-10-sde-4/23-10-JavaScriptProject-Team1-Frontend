@@ -62,7 +62,8 @@
   align-items: center;
 }
 
-#nav-buttons-container a:hover {
+#nav-buttons-container a:hover,
+#nav-buttons-container button:hover{
   background-color: #0d6efd;
   color: #ffffff;
 }

@@ -1,6 +1,9 @@
 {
   "name": "projfrontend",
   "version": "0.1.0",
+  "engines": {
+    "node": "20.10.0"
+  },
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -19,7 +22,7 @@
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^9.1.2"
   },
   "scripts": {

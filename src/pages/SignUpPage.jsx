@@ -1,75 +1,99 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
-function SignUpPage() {
-  const [formState, setFormState] = useState({ email: "", username: "", password: "" }); //! hooking variables to store user input
+const SignUpPage = () => {
+  const [formState, setFormState] = useState({ email: "", username: "", password: "" });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormState({ ...formState, [name]: value }); //! handling(updating state)
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const postNewUserSignUp = async () => {
-    //! handling form submission POST request
+  const postNewUserSignUp = async (e) => {
+    e.preventDefault();
     const data = {
       email: formState.email,
       username: formState.username,
       password: formState.password,
-    }; //! data object
+    };
 
     try {
-      const response = await fetch("//! update endpoint", {
-        //? peep the fetch function sending a POST request
-        method: "POST", //! POST request
+      const response = await fetch("http://localhost:3001/auth/signup", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) {
-        throw new Error("Network not ok");
-      }
+      const res = await response.json();
 
-      console.log("User signed up successfully");
-      // Handle success for signing up
+      if (!response.ok) {
+        toast.error(`${res.message}`, {
+          position: toast.POSITION.TOP_CENTER,
+          draggable: false,
+        });
+      } else {
+        toast.success(`${res.message}`, {
+          position: toast.POSITION.TOP_CENTER,
+          draggable: false,
+        });
+        setTimeout(() => {
+          window.location.replace('/login');
+        }, 2000)
+      }
     } catch (error) {
-      console.error("Error signing up:", error.message); //! error handling
-      // Handle error for signing up
+      toast.error("Error during signup. Please try again.", {
+        position: toast.POSITION.TOP_CENTER,
+        draggable: false,
+      });
     }
   };
 
   return (
-    <div className="signUp">
-      <label>Email: </label>
-      <input
-        required
-        type="text"
-        name="email"
-        placeholder="Enter email: email@example.com"
-        onChange={handleInputChange}
-      />
-      <label>Username: </label>
-      <input
-        required
-        type="text"
-        name="username"
-        placeholder="Create username"
-        onChange={handleInputChange}
-      />
-      <label>Password: </label>
-      <input
-        required
-        type="text"
-        name="password"
-        placeholder="Create password"
-        onChange={handleInputChange}
-      />
-      <button required onClick={postNewUserSignUp}>
-        Save and Submit
-      </button>
+    <div className="signup-form-wrapper">
+      <form onSubmit={postNewUserSignUp} className="signup-form">
+        <h1 className="text-light">Create an account</h1>
+        <div className="signup-form-group">
+          <label className="signup-form-label">Email:</label>
+          <input
+            required
+            type="text"
+            name="email"
+            placeholder="Enter email: email@example.com"
+            onChange={handleInputChange}
+            className="signup-form-input"
+          />
+        </div>
+        <div className="signup-form-group">
+          <label className="signup-form-label">Username:</label>
+          <input
+            required
+            type="text"
+            name="username"
+            placeholder="Create username"
+            onChange={handleInputChange}
+            className="signup-form-input"
+          />
+        </div>
+        <div className="signup-form-group">
+          <label className="signup-form-label">Password:</label>
+          <input
+            required
+            type="password"
+            name="password"
+            placeholder="Create password"
+            onChange={handleInputChange}
+            className="signup-form-input"
+          />
+        </div>
+        <button type="submit" className="signup-button">
+          <span>Sign Up</span><i></i>
+        </button>
+      </form>
     </div>
   );
-}
+};
 
 export default SignUpPage;

@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import doomguy from "../assets/images/doomguy-bg.webp";
 import okage from "../assets/images/okage-bg.webp";
 import supermariogalaxy from "../assets/images/supermariogalaxy-bg.webp";
+import Auth from "../utils/authUtil";
 
 function Home() {
+  const userId = Auth.getUserId();
+  const isLoggedIn = Auth.isLoggedIn();
+
   return (
     <div className="homepage-container">
       <Navbar />
-      <div className="d-flex p-2 justify-content-evenly align-items-center">
-        <div className="jumbotron mt-2 ">
+      <div className="d-flex p-2 justify-content-evenly align-items-center flex-wrap">
+        <div className="jumbotron mt-1 custom-jumbotron">
+          {isLoggedIn ? <div>How are you </div> : <div></div>}
           <h1 className="display-4">All about us!</h1>
           <p className="lead">We connect People</p>
           <hr className="my-4" />
-          <p>
-            This site is designed to connect people, based on their similar
-            interest in similar games.
-          </p>
+          <p>Come along and find like-minded gamers.</p>
           <p className="lead">
             <Link to="/signup" className="btn btn-warning">
               Sign-up

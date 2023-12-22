@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGamepad, faHouse, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import "../assets/css/Navbar.css";
 
 const Navbar = () => {
@@ -18,27 +19,33 @@ const Navbar = () => {
 
             <div className="row row-cols-3">
               <div className="col">
-                <button type="button">
-                  {" "}
-                  <Link to="/">Home</Link>
+                <button id="home" className="btn btn-primary" type="button">
+                  <Link id="home" to="/">
+                    <FontAwesomeIcon icon={faHouse} />
+                    Home
+                  </Link>
                 </button>
               </div>
-              <div className="col">
-                <button type="button">
-                  {" "}
-                  <Link to="/game-catalog">Game Catalog</Link>
-                </button>
-              </div>
-              <div className="col">
-                <button type="button">
-                  {" "}
-                  <Link to="/login">Login</Link>
-                </button>
 
+              <div className="col">
+                <button id="games" className="btn btn-primary" type="button">
+                  <Link id="games" to="/GameCatalog">
+                    <FontAwesomeIcon icon={faGamepad} />
+                    Games
+                  </Link>
+                </button>
+              </div>
+
+              <div className="col">
+                <button id="login" className="btn btn-primary" type="button">
+                  <Link id="login" to="/login">
+                    <FontAwesomeIcon icon={faDoorOpen} />
+                    Login
+                  </Link>
+                </button>
                 <div className="wave"></div>
               </div>
             </div>
-
             <div className="wave"></div>
           </div>
         </nav>

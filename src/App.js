@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -12,7 +12,6 @@ import "./assets/css/SignUpPage.css"
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-// import ParticlesConfig from "./components/config/ParticlesConfig";
 import GameCatalog from "./pages/GameCatalog";
 import Profile from "./pages/Profile";
 import gameHandler from "./utils/gameHandler";
@@ -29,7 +28,6 @@ function App() {
       <ToastContainer theme="colored" autoClose={2000} />
       <Routes>
         {/* Routes to the pages we want to show */}
-        {/* <Route path="/ParticlesBg" element={<ParticlesConfig />} /> */}
         <Route path="/" element={<Home data={data} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
